@@ -1,0 +1,344 @@
+/* Animations */
+
+/* Card Exit Animations - handled by drag.css now */
+
+/* Rubber Band Effect */
+@keyframes rubberBand {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    30% {
+        transform: scale(1.05) rotate(0deg);
+    }
+    40% {
+        transform: scale(0.98) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.02) rotate(0deg);
+    }
+    65% {
+        transform: scale(0.99) rotate(0deg);
+    }
+    75% {
+        transform: scale(1.01) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.rubber-band {
+    animation: rubberBand 0.8s ease-out;
+}
+
+/* Button Glow Effects */
+@keyframes glowRed {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px 5px rgba(244, 67, 54, 0.4);
+    }
+}
+
+@keyframes glowGreen {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.4);
+    }
+}
+
+.choice-button.glow-left {
+    animation: glowRed 1s ease-in-out infinite;
+}
+
+.choice-button.glow-right {
+    animation: glowGreen 1s ease-in-out infinite;
+}
+
+/* Card Entry Animation */
+@keyframes cardEnterBottom {
+    0% {
+        transform: translateY(50px) scale(0.95);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.card-entering {
+    animation: cardEnterBottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Consequence Text Animation */
+@keyframes consequenceFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(10px);
+    }
+    12% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    88% {
+        opacity: 0.8;
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translateY(-10px);
+    }
+}
+
+.consequence-showing {
+    animation: consequenceFade 2s ease-out forwards;
+}
+
+/* Button fade animation */
+.choice-buttons {
+    transition: opacity 0.3s ease-out;
+}
+
+.choice-buttons.buttons-hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Loading States */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.loading {
+    background: linear-gradient(
+        90deg,
+        var(--bg-secondary) 25%,
+        rgba(255, 255, 255, 0.3) 50%,
+        var(--bg-secondary) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Phase Transition Effects */
+@keyframes phaseChange {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.phase-transition {
+    animation: phaseChange 1s ease-in-out;
+}
+
+/* Success/Failure Feedback */
+@keyframes successPulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        background-color: rgba(76, 175, 80, 0.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes failurePulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+        background-color: rgba(244, 67, 54, 0.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Modal Animations */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal.active {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal.active .modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+/* Subtle UI Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Critical State Warning */
+@keyframes criticalWarning {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.critical-warning {
+    animation: criticalWarning 1s ease-in-out infinite;
+}
+
+/* Touch Feedback */
+@keyframes touchRipple {
+    0% {
+        transform: scale(0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.touch-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.1);
+    pointer-events: none;
+    animation: touchRipple 0.6s ease-out;
+}
+
+/* Crisis Alert Animation */
+@keyframes crisisAlertIn {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes crisisShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+@keyframes urgentPulse {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 20px 10px rgba(239, 68, 68, 0.2);
+    }
+}
+
+.crisis-alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    z-index: 2000;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.crisis-alert.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.crisis-alert-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.crisis-header {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    margin-bottom: var(--spacing-sm);
+    animation: urgentPulse 1s ease-in-out infinite;
+}
+
+.crisis-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.crisis-shake {
+    animation: crisisShake 0.5s ease-in-out;
+}
+
+/* Urgent card styling */
+.card.urgent {
+    border-color: var(--color-red);
+    animation: urgentPulse 2s ease-in-out infinite;
+}
+
+.card.urgent .card-header {
+    color: var(--color-red);
+    font-weight: 600;
+}

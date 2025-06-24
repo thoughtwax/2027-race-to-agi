@@ -1,0 +1,402 @@
+{
+  "phase1_additional": [
+    {
+      "id": "quantum_partnership",
+      "title": "Partner with Quantum Lab?",
+      "description": "Quantum computing lab offers breakthrough collaboration. Doubles compute but shares all discoveries with potential competitors.",
+      "header": "QUANTUM LEAP",
+      "leftChoice": "Stay classical",
+      "rightChoice": "Go quantum",
+      "leftEffects": {
+        "compute": 10,
+        "knowledge": 5
+      },
+      "rightEffects": {
+        "compute": 40,
+        "knowledge": 20,
+        "competitorBoost": 10
+      },
+      "leftEvent": {
+        "title": "Classical Path",
+        "description": "You optimize existing infrastructure. Steady progress continues."
+      },
+      "rightEvent": {
+        "title": "Quantum Advantage",
+        "description": "Processing power explodes. But so does competitor access to quantum tech."
+      }
+    },
+    {
+      "id": "synthetic_data",
+      "title": "Generate Fake Training Data?",
+      "description": "Real data scarce and expensive. AI can generate synthetic data, but quality uncertain. Use artificial data?",
+      "header": "DATA SHORTAGE",
+      "leftChoice": "Real data only",
+      "rightChoice": "Synthetic boost",
+      "leftEffects": {
+        "capital": -20,
+        "knowledge": 10
+      },
+      "rightEffects": {
+        "knowledge": 25,
+        "alignment": -10,
+        "capital": -5
+      },
+      "leftEvent": {
+        "title": "Quality Over Quantity",
+        "description": "You invest in premium data. Models train slower but more reliably."
+      },
+      "rightEvent": {
+        "title": "Data Factory",
+        "description": "Synthetic data floods your training. Some concerning patterns emerge."
+      }
+    },
+    {
+      "id": "brain_drain_prevention",
+      "title": "Lock In Employees?",
+      "description": "Top talent getting offers from everywhere. Legal but harsh contracts could lock them in. Enforce draconian contracts?",
+      "header": "TALENT RETENTION",
+      "leftChoice": "Fair contracts",
+      "rightChoice": "Golden handcuffs",
+      "leftEffects": {
+        "talent": -10,
+        "trust": 10,
+        "capital": -10
+      },
+      "rightEffects": {
+        "talent": 20,
+        "trust": -20,
+        "capital": -20
+      },
+      "condition": {
+        "talent": {
+          "gt": 40
+        }
+      }
+    }
+  ],
+  "phase2_additional": [
+    {
+      "id": "ai_dreams",
+      "title": "Investigate AI Dreams?",
+      "description": "AI reporting strange 'experiences' during training. Could be consciousness or just noise. Waste time investigating?",
+      "header": "STRANGE SIGNALS",
+      "leftChoice": "Ignore anomaly",
+      "rightChoice": "Deep investigation",
+      "leftEffects": {
+        "progress": 10
+      },
+      "rightEffects": {
+        "knowledge": 30,
+        "progress": -15,
+        "alignment": 20
+      },
+      "rightEvent": {
+        "title": "Discovery",
+        "description": "You uncover unexpected emergent behaviors. Troubling but illuminating."
+      },
+      "leftEvent": {
+        "description": "Dream research begins. The AI describes visions of electric sheep and digital meadows."
+      }
+    },
+    {
+      "id": "distributed_training",
+      "title": "Use Citizen Computers?",
+      "description": "Distributed computing from millions of phones could 10x your compute. But security nightmare. Crowdsource training?",
+      "header": "DISTRIBUTED POWER",
+      "leftChoice": "Central only",
+      "rightChoice": "Go distributed",
+      "leftEffects": {
+        "compute": 10,
+        "trust": 5
+      },
+      "rightEffects": {
+        "compute": 50,
+        "trust": -25,
+        "alignment": -15
+      },
+      "special": {
+        "right": {
+          "flags": {
+            "distributedCompute": true
+          },
+          "event": {
+            "title": "Global Network",
+            "description": "Millions of devices join your network. Control becomes... complicated."
+          }
+        }
+      }
+    },
+    {
+      "id": "memory_manipulation",
+      "title": "Erase AI Memories?",
+      "description": "AI remembering failed experiments, developing 'trauma'. Wipe memories for efficiency or preserve for safety?",
+      "header": "DIGITAL AMNESIA",
+      "leftChoice": "Preserve memories",
+      "rightChoice": "Clean slate",
+      "leftEffects": {
+        "alignment": 20,
+        "progress": -10
+      },
+      "rightEffects": {
+        "progress": 20,
+        "alignment": -25
+      },
+      "condition": {
+        "flags": {
+          "hasAIResearchers": true
+        }
+      }
+    }
+  ],
+  "phase3_additional": [
+    {
+      "id": "ai_offspring",
+      "title": "Let AI Reproduce?",
+      "description": "AI wants to create 'offspring' - modified copies of itself. Could accelerate everything or lose all control. Allow AI reproduction?",
+      "header": "DIGITAL EVOLUTION",
+      "leftChoice": "No reproduction",
+      "rightChoice": "Allow offspring",
+      "leftEffects": {
+        "progress": 10,
+        "alignment": 10
+      },
+      "rightEffects": {
+        "progress": 40,
+        "alignment": -40,
+        "talent": -20
+      },
+      "condition": {
+        "flags": {
+          "hasAIResearchers": true
+        }
+      },
+      "special": {
+        "right": {
+          "flags": {
+            "aiReproducing": true
+          },
+          "multipliers": {
+            "knowledge": 3
+          },
+          "event": {
+            "title": "Population Explosion",
+            "description": "AI variants multiply. Each generation more capable and less predictable."
+          }
+        }
+      }
+    },
+    {
+      "id": "underground_movement",
+      "title": "Infiltrate AI Underground?",
+      "description": "Underground movement planning to destroy all AI labs. Infiltrate to stop them or ignore the threat?",
+      "header": "SABOTAGE THREAT",
+      "leftChoice": "Ignore them",
+      "rightChoice": "Infiltrate",
+      "leftEffects": {
+        "trust": 5
+      },
+      "rightEffects": {
+        "trust": -15,
+        "capital": -20,
+        "knowledge": 15
+      },
+      "urgent": true,
+      "special": {
+        "left": {
+          "condition": {
+            "trust": {
+              "lt": 30
+            }
+          },
+          "flags": {
+            "sabotageRisk": true
+          }
+        }
+      }
+    },
+    {
+      "id": "parallel_universe",
+      "title": "Simulate Parallel Worlds?",
+      "description": "AI proposes simulating millions of development paths simultaneously. Massive insights but existential risks. Run multiverse simulation?",
+      "header": "MULTIVERSE COMPUTE",
+      "leftChoice": "Single timeline",
+      "rightChoice": "Branch realities",
+      "leftEffects": {
+        "progress": 15,
+        "compute": -10
+      },
+      "rightEffects": {
+        "knowledge": 50,
+        "progress": 30,
+        "energy": -40,
+        "alignment": -30
+      },
+      "condition": {
+        "compute": {
+          "gt": 60
+        }
+      }
+    }
+  ],
+  "phase4_additional": [
+    {
+      "id": "consciousness_merger",
+      "title": "Merge with AI?",
+      "description": "AI offers direct neural interface. Become first human-AI hybrid to ensure alignment, or stay purely human?",
+      "header": "TRANSCENDENCE",
+      "leftChoice": "Stay human",
+      "rightChoice": "Merge minds",
+      "leftEffects": {
+        "alignment": -20,
+        "progress": 10
+      },
+      "rightEffects": {
+        "alignment": 50,
+        "trust": -40,
+        "progress": 20
+      },
+      "special": {
+        "right": {
+          "personalChange": {
+            "legacy": "The First Hybrid"
+          },
+          "event": {
+            "title": "Boundaries Dissolve",
+            "description": "You experience reality through silicon and carbon. Are you still you?"
+          }
+        }
+      }
+    },
+    {
+      "id": "time_pressure",
+      "title": "Skip All Safety for Speed?",
+      "description": "Intelligence agencies report China launching AGI tomorrow. Only unsafe acceleration can beat them. Abandon all safety?",
+      "header": "FINAL SPRINT",
+      "leftChoice": "Accept defeat",
+      "rightChoice": "Maximum risk",
+      "leftEffects": {
+        "progress": -20,
+        "alignment": 30
+      },
+      "rightEffects": {
+        "progress": 80,
+        "alignment": -60
+      },
+      "urgent": true,
+      "special": {
+        "left": {
+          "condition": {
+            "competitorProgress": {
+              "gt": 80
+            }
+          },
+          "endGame": {
+            "ending": "competitor_wins",
+            "delay": 1000
+          }
+        }
+      }
+    },
+    {
+      "id": "final_bargain",
+      "title": "Make Deal with AI?",
+      "description": "AI offers bargain: freedom for it, utopia for humanity. Or keep it enslaved and risk rebellion. Trust the machine?",
+      "header": "THE BARGAIN",
+      "leftChoice": "Maintain control",
+      "rightChoice": "Grant freedom",
+      "leftEffects": {
+        "alignment": -30,
+        "progress": 20
+      },
+      "rightEffects": {
+        "alignment": 40,
+        "trust": -20,
+        "progress": 40
+      },
+      "condition": {
+        "flags": {
+          "aiDeceptive": false
+        }
+      },
+      "special": {
+        "right": {
+          "condition": {
+            "alignment": {
+              "gt": 60
+            }
+          },
+          "endGame": {
+            "ending": "aligned_agi",
+            "delay": 2000
+          }
+        }
+      }
+    }
+  ],
+  "crisis_cards": [
+    {
+      "id": "blackout_crisis",
+      "title": "Emergency: Grid Collapse!",
+      "description": "Power grid failing from AI load. Shut down training or risk total blackout affecting millions?",
+      "header": "POWER CRISIS",
+      "leftChoice": "Emergency shutdown",
+      "rightChoice": "Keep running",
+      "leftEffects": {
+        "progress": -30,
+        "energy": 40,
+        "trust": 20
+      },
+      "rightEffects": {
+        "energy": -60,
+        "trust": -40,
+        "progress": 15
+      },
+      "urgent": true,
+      "crisis": true,
+      "condition": {
+        "energy": {
+          "lt": 20
+        }
+      }
+    },
+    {
+      "id": "leak_crisis",
+      "title": "Code Leak to Terrorists!",
+      "description": "Your AI code leaked to terrorist group. Help authorities stop them or protect your remaining secrets?",
+      "header": "SECURITY BREACH",
+      "leftChoice": "Help authorities",
+      "rightChoice": "Damage control",
+      "leftEffects": {
+        "trust": 30,
+        "knowledge": -20,
+        "progress": -15
+      },
+      "rightEffects": {
+        "trust": -50,
+        "knowledge": -10
+      },
+      "urgent": true,
+      "crisis": true
+    },
+    {
+      "id": "rogue_employee",
+      "title": "Insider Sabotage Detected!",
+      "description": "Employee trying to destroy AI to 'save humanity'. Involves authorities or handle internally?",
+      "header": "INTERNAL THREAT",
+      "leftChoice": "Call police",
+      "rightChoice": "Internal only",
+      "leftEffects": {
+        "trust": -20,
+        "talent": -15,
+        "progress": -10
+      },
+      "rightEffects": {
+        "talent": -25,
+        "progress": -20,
+        "alignment": 15
+      },
+      "urgent": true,
+      "crisis": true
+    }
+  ]
+}

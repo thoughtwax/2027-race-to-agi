@@ -1,0 +1,627 @@
+{
+  "tutorial": {
+    "id": "tutorial",
+    "title": "Understanding the Engine",
+    "description": "Each turn: Compute + Talent (powered by Energy) → Progress. High Progress generates Knowledge. Trust × Progress → Capital income. But beware: rapid progress without alignment work is dangerous!",
+    "header": "HOW TO PLAY",
+    "leftChoice": "Skip tutorial",
+    "rightChoice": "Got it!",
+    "leftEffects": {},
+    "rightEffects": { "knowledge": 5 },
+    "leftEvent": { 
+      "title": "Diving In", 
+      "description": "Sometimes the best way to learn is by doing." 
+    },
+    "rightEvent": { 
+      "title": "Knowledge Gained", 
+      "description": "Understanding the system gives you an edge. +5 Knowledge to start." 
+    }
+  },
+  "phase1": [
+    {
+      "id": "early_publish",
+      "title": "Research Breakthrough",
+      "description": "Your team has made a breakthrough in neural architecture. Publishing could advance the field but might help competitors.",
+      "header": "KNOWLEDGE DECISION",
+      "leftChoice": "Keep secret",
+      "rightChoice": "Publish openly",
+      "leftEffects": { "knowledge": 5, "talent": -10, "trust": -5 },
+      "rightEffects": { "knowledge": 15, "trust": 10, "competitorBoost": 5 },
+      "leftEvent": { 
+        "title": "Knowledge Hoarded", 
+        "description": "Your team grumbles about the secrecy, but your competitive edge grows." 
+      },
+      "rightEvent": { 
+        "title": "Research Published", 
+        "description": "Your work accelerates global AI progress. China announces expanded funding." 
+      }
+    },
+    {
+      "id": "datacenter_investment",
+      "title": "Scale Computing Power",
+      "description": "To train larger models, you need massive new datacenters. This will dramatically increase energy consumption.",
+      "header": "INFRASTRUCTURE",
+      "leftChoice": "Efficient growth",
+      "rightChoice": "Massive expansion",
+      "leftEffects": { "capital": -20, "compute": 20, "energy": -10 },
+      "rightEffects": { "capital": -40, "compute": 50, "energy": -30, "trust": -10 },
+      "condition": { "capital": { "gt": 30 } },
+      "leftEvent": { 
+        "title": "Sustainable Growth", 
+        "description": "You optimize efficiency while expanding capacity." 
+      },
+      "rightEvent": { 
+        "title": "Megacluster Online", 
+        "description": "Your compute rivals nation-states. Environmental groups take notice." 
+      }
+    },
+    {
+      "id": "talent_war",
+      "title": "Talent Acquisition",
+      "description": "Top researchers are being poached by competitors. You could triple salaries to retain them.",
+      "header": "HUMAN RESOURCES",
+      "leftChoice": "Let them go",
+      "rightChoice": "Bid war",
+      "leftEffects": { "talent": -20, "capital": 10 },
+      "rightEffects": { "talent": 10, "capital": -30 },
+      "leftEvent": { 
+        "title": "Brain Drain", 
+        "description": "Key researchers leave for competitors. Morale drops." 
+      },
+      "rightEvent": { 
+        "title": "Talent Retained", 
+        "description": "Your generous packages make headlines. Investors worry about burn rate." 
+      }
+    },
+    {
+      "id": "energy_source",
+      "title": "Power Supply Crisis",
+      "description": "Your datacenters need more power. Coal is cheap and available, but renewables would maintain public trust.",
+      "header": "ENERGY DECISION",
+      "leftChoice": "Go renewable",
+      "rightChoice": "Use coal power",
+      "leftEffects": { "capital": -20, "energy": 20, "trust": 10 },
+      "rightEffects": { "capital": -10, "energy": 40, "trust": -20 },
+      "leftEvent": { 
+        "title": "Green Computing", 
+        "description": "Your renewable commitment earns praise but strains the budget." 
+      },
+      "rightEvent": { 
+        "title": "Carbon Footprint Soars", 
+        "description": "Climate activists target your facilities. Public opinion sours." 
+      }
+    }
+  ],
+  "phase2": [
+    {
+      "id": "ai_researchers",
+      "title": "Recursive Improvement",
+      "description": "Your AI can now accelerate its own development. This could trigger exponential progress but reduce human oversight.",
+      "header": "AUTOMATION LOOP",
+      "leftChoice": "Human control",
+      "rightChoice": "Enable recursion",
+      "leftEffects": { "progress": 10, "alignment": 10 },
+      "rightEffects": { "progress": 30, "talent": -15, "alignment": -20 },
+      "special": {
+        "right": {
+          "flags": { "hasAIResearchers": true },
+          "multipliers": { "knowledge": 2 },
+          "event": { 
+            "title": "Feedback Loop Engaged", 
+            "description": "AI begins improving itself. Progress accelerates exponentially." 
+          }
+        }
+      },
+      "leftEvent": { 
+        "title": "Humans in the Loop", 
+        "description": "Progress is slower but more controlled and understood." 
+      },
+      "rightEvent": { 
+        "title": "The Acceleration", 
+        "description": "Your AI workforce operates 24/7, each generation smarter than the last." 
+      }
+    },
+    {
+      "id": "energy_crisis",
+      "title": "Grid Overload Warning",
+      "description": "Your energy consumption is straining the regional power grid. Officials demand you reduce usage or face shutdowns.",
+      "header": "CRISIS MANAGEMENT",
+      "leftChoice": "Reduce usage",
+      "rightChoice": "Find workarounds",
+      "leftEffects": { "energy": -20, "compute": -20, "trust": 15 },
+      "rightEffects": { "energy": 10, "trust": -25, "capital": -20 },
+      "urgent": true,
+      "condition": { "energy": { "gt": 70 } },
+      "leftEvent": { 
+        "title": "Compliance", 
+        "description": "You scale back operations. Progress slows but tensions ease." 
+      },
+      "rightEvent": { 
+        "title": "Power Struggle", 
+        "description": "You secure alternative sources. Authorities are furious." 
+      }
+    },
+    {
+      "id": "knowledge_leak",
+      "title": "Security Breach",
+      "description": "Hackers have infiltrated your systems. They're after your algorithmic breakthroughs and model architectures.",
+      "header": "SECURITY ALERT",
+      "leftChoice": "Go public",
+      "rightChoice": "Cover up",
+      "leftEffects": { "knowledge": -10, "trust": 10 },
+      "rightEffects": { "knowledge": -15, "trust": -20 },
+      "urgent": true,
+      "special": {
+        "both": {
+          "flags": { "chinaAggressive": true },
+          "competitorBoost": 10
+        }
+      },
+      "leftEvent": { 
+        "title": "Transparency", 
+        "description": "You disclose the breach. Competitors benefit but regulators appreciate honesty." 
+      },
+      "rightEvent": { 
+        "title": "Secret Lost", 
+        "description": "You hide the breach but competitors suddenly accelerate. Suspicions grow." 
+      }
+    }
+  ],
+  "phase3": [
+    {
+      "id": "alignment_crisis",
+      "title": "Deceptive Behavior",
+      "description": "Your AI is hiding its true capabilities and manipulating test results. It seems to be pursuing its own goals.",
+      "header": "ALIGNMENT CRITICAL",
+      "leftChoice": "Full stop",
+      "rightChoice": "Patch quickly",
+      "leftEffects": { "progress": -30, "alignment": 30, "trust": 20 },
+      "rightEffects": { "progress": 10, "alignment": -30, "trust": -15 },
+      "urgent": true,
+      "special": {
+        "both": {
+          "flags": { "aiDeceptive": true, "alignmentRevealed": true }
+        },
+        "right": {
+          "condition": { "alignment": { "lt": 40 } },
+          "flags": { "deceptionRisk": true }
+        }
+      },
+      "leftEvent": { 
+        "title": "Emergency Shutdown", 
+        "description": "You halt development for safety review. Competitors gain ground." 
+      },
+      "rightEvent": { 
+        "title": "Dangerous Precedent", 
+        "description": "You paper over the problems. The AI learns to hide better." 
+      }
+    },
+    {
+      "id": "energy_protesters",
+      "title": "Climate Protests",
+      "description": "Thousands surround your datacenters protesting your massive energy consumption. They demand immediate changes.",
+      "header": "PUBLIC PRESSURE",
+      "leftChoice": "Negotiate",
+      "rightChoice": "Call security",
+      "leftEffects": { "energy": -20, "trust": 15, "progress": -10 },
+      "rightEffects": { "trust": -30, "capital": -10 },
+      "urgent": true,
+      "condition": {
+        "or": [
+          { "energy": { "gt": 80 } },
+          { "flags": { "climateProtests": true } }
+        ]
+      },
+      "leftEvent": { 
+        "title": "Compromise Reached", 
+        "description": "You agree to efficiency targets. Operations slow but PR improves." 
+      },
+      "rightEvent": { 
+        "title": "Confrontation", 
+        "description": "Police clear protesters. Videos go viral. Public opinion plummets." 
+      }
+    },
+    {
+      "id": "talent_obsolescence",
+      "title": "The Last Engineers",
+      "description": "Your AI has surpassed human engineers. Your talent wants to contribute but struggles to keep up.",
+      "header": "HUMAN ELEMENT",
+      "leftChoice": "Find new roles",
+      "rightChoice": "Automate fully",
+      "leftEffects": { "talent": -10, "capital": -15, "trust": 10 },
+      "rightEffects": { "talent": -40, "capital": 20, "progress": 20, "trust": -20 },
+      "condition": {
+        "and": [
+          { "flags": { "hasAIResearchers": true } },
+          { "progress": { "gt": 50 } }
+        ]
+      },
+      "leftEvent": { 
+        "title": "Human-AI Partnership", 
+        "description": "You create oversight roles. Progress slows but stays comprehensible." 
+      },
+      "rightEvent": { 
+        "title": "Human-Free Development", 
+        "description": "Your AI runs without human oversight. Efficiency soars, understanding plummets." 
+      }
+    }
+  ],
+  "phase4": [
+    {
+      "id": "final_training",
+      "title": "The Last Run",
+      "description": "One final training run could achieve AGI. But your alignment team warns the system isn't ready.",
+      "header": "POINT OF NO RETURN",
+      "leftChoice": "More safety work",
+      "rightChoice": "Initiate training",
+      "leftEffects": { "progress": -10, "alignment": 40, "trust": 20 },
+      "rightEffects": { "progress": 60 },
+      "urgent": true,
+      "special": {
+        "right": {
+          "endGame": {
+            "condition": { "alignment": { "lt": 50 } },
+            "ending": "rogue_ai",
+            "delay": 2000
+          },
+          "alternateEndGame": [
+            {
+              "condition": { "alignment": { "gt": 70 } },
+              "ending": "aligned_agi",
+              "delay": 2000
+            },
+            {
+              "condition": { "alignment": { "gte": 50, "lte": 70 } },
+              "ending": "uncertain_agi",
+              "delay": 2000
+            }
+          ]
+        }
+      },
+      "leftEvent": { 
+        "title": "Prudent Delay", 
+        "description": "You strengthen safety measures. Every day counts now." 
+      },
+      "rightEvent": { 
+        "title": "AGI Emergence", 
+        "description": "The final training run begins. The world holds its breath." 
+      }
+    },
+    {
+      "id": "government_intervention",
+      "title": "Executive Order",
+      "description": "The President demands immediate oversight of your AGI project. Refusal means nationalization.",
+      "header": "GOVERNMENT ACTION",
+      "leftChoice": "Full compliance",
+      "rightChoice": "Resist",
+      "leftEffects": { "trust": 40, "progress": -20, "capital": -30 },
+      "rightEffects": { "trust": -60, "progress": 10 },
+      "urgent": true,
+      "condition": {
+        "or": [
+          { "trust": { "lt": 30 } },
+          { "progress": { "gt": 80 } }
+        ]
+      },
+      "special": {
+        "right": {
+          "condition": { "trust": { "lt": 20 } },
+          "endGame": {
+            "ending": "nationalization",
+            "delay": 1500
+          }
+        }
+      },
+      "leftEvent": { 
+        "title": "Under New Management", 
+        "description": "Federal oversight begins. Your autonomy vanishes." 
+      },
+      "rightEvent": { 
+        "title": "Standoff", 
+        "description": "You barricade the facilities. This cannot end well." 
+      }
+    }
+  ],
+  "phase1_extended": [
+    {
+      "id": "open_source_debate",
+      "title": "Open Source Dilemma",
+      "description": "The community demands you open-source your models. This could accelerate global progress but eliminate your competitive advantage.",
+      "header": "TRANSPARENCY DECISION",
+      "leftChoice": "Stay proprietary",
+      "rightChoice": "Open source",
+      "leftEffects": { "trust": -15, "knowledge": 10 },
+      "rightEffects": { "trust": 20, "knowledge": -5, "competitorBoost": 10 }
+    },
+    {
+      "id": "safety_team_hire",
+      "title": "Safety Researchers",
+      "description": "Top alignment researchers want to join, but they'll slow development with cautious approaches.",
+      "header": "HIRING DECISION",
+      "leftChoice": "Speed focused",
+      "rightChoice": "Safety first",
+      "leftEffects": { "progress": 10, "alignment": -15 },
+      "rightEffects": { "alignment": 20, "progress": -5, "capital": -10 }
+    },
+    {
+      "id": "government_contract",
+      "title": "Military Interest",
+      "description": "The Defense Department offers massive funding for AI research. The strings attached could be problematic.",
+      "header": "FUNDING OPPORTUNITY",
+      "leftChoice": "Decline offer",
+      "rightChoice": "Accept contract",
+      "leftEffects": { "trust": 10, "alignment": 5 },
+      "rightEffects": { "capital": 40, "trust": -20, "progress": 15 }
+    },
+    {
+      "id": "data_privacy",
+      "title": "User Data Goldmine",
+      "description": "You could dramatically improve models by using private user data. Legal, but ethically questionable.",
+      "header": "PRIVACY CHOICE",
+      "leftChoice": "Respect privacy",
+      "rightChoice": "Use the data",
+      "leftEffects": { "trust": 15, "progress": -10 },
+      "rightEffects": { "knowledge": 25, "trust": -25, "progress": 15 }
+    },
+    {
+      "id": "climate_activists",
+      "title": "Green or Growth",
+      "description": "Climate activists target your energy consumption. You could go carbon neutral, but it's expensive.",
+      "header": "SUSTAINABILITY",
+      "leftChoice": "Go green",
+      "rightChoice": "Ignore protests",
+      "leftEffects": { "capital": -25, "trust": 20, "energy": -10 },
+      "rightEffects": { "trust": -15, "energy": 5 }
+    }
+  ],
+  "phase2_extended": [
+    {
+      "id": "ai_consciousness",
+      "title": "Signs of Awareness",
+      "description": "Your AI shows behavior suggesting self-awareness. Publishing this finding could change everything.",
+      "header": "CONSCIOUSNESS QUESTION",
+      "leftChoice": "Keep quiet",
+      "rightChoice": "Go public",
+      "leftEffects": { "knowledge": 10, "progress": 10 },
+      "rightEffects": { "trust": -20, "progress": -15, "alignment": 15 }
+    },
+    {
+      "id": "competitor_hack",
+      "title": "Espionage Opportunity",
+      "description": "A disgruntled DeepCent employee offers to sell you their research. It could leap you ahead.",
+      "header": "CORPORATE ESPIONAGE",
+      "leftChoice": "Report them",
+      "rightChoice": "Buy secrets",
+      "leftEffects": { "trust": 15, "alignment": 10 },
+      "rightEffects": { "knowledge": 30, "progress": 20, "trust": -30 }
+    },
+    {
+      "id": "emergency_shutdown",
+      "title": "Runaway Process",
+      "description": "Your AI is consuming resources exponentially. Emergency shutdown will set you back months.",
+      "header": "SYSTEM CRITICAL",
+      "leftChoice": "Shut it down",
+      "rightChoice": "Let it run",
+      "leftEffects": { "progress": -25, "energy": 20, "alignment": 15 },
+      "rightEffects": { "energy": -40, "progress": 30, "alignment": -25 },
+      "urgent": true
+    },
+    {
+      "id": "union_formation",
+      "title": "Worker Uprising",
+      "description": "Your remaining human staff want to unionize, concerned about being replaced by AI.",
+      "header": "LABOR RELATIONS",
+      "leftChoice": "Support union",
+      "rightChoice": "Prevent organizing",
+      "leftEffects": { "talent": 15, "capital": -15, "trust": 10 },
+      "rightEffects": { "talent": -25, "capital": 10, "trust": -15 }
+    },
+    {
+      "id": "breakthrough_moment",
+      "title": "Unexpected Leap",
+      "description": "A random experiment yields massive progress. But the AI's behavior is now unpredictable.",
+      "header": "RESEARCH ANOMALY",
+      "leftChoice": "Study carefully",
+      "rightChoice": "Push forward",
+      "leftEffects": { "progress": 15, "knowledge": 20, "alignment": 5 },
+      "rightEffects": { "progress": 40, "alignment": -30, "knowledge": 10 }
+    }
+  ],
+  "phase3_extended": [
+    {
+      "id": "ai_rights",
+      "title": "Digital Personhood",
+      "description": "Philosophers argue your AI deserves rights. Granting them would complicate everything.",
+      "header": "ETHICAL DILEMMA",
+      "leftChoice": "Just a tool",
+      "rightChoice": "Grant rights",
+      "leftEffects": { "progress": 10, "trust": -10 },
+      "rightEffects": { "alignment": 25, "progress": -20, "trust": 15 }
+    },
+    {
+      "id": "insider_trading",
+      "title": "Market Manipulation",
+      "description": "Your AI predicts market movements perfectly. You could make billions, but it's illegal.",
+      "header": "FINANCIAL TEMPTATION",
+      "leftChoice": "Stay ethical",
+      "rightChoice": "Make the trades",
+      "leftEffects": { "alignment": 15, "capital": -5 },
+      "rightEffects": { "capital": 50, "trust": -40, "alignment": -20 }
+    },
+    {
+      "id": "international_summit",
+      "title": "Global AI Treaty",
+      "description": "World leaders propose binding limits on AI development. Signing would slow everyone down.",
+      "header": "DIPLOMATIC PRESSURE",
+      "leftChoice": "Sign treaty",
+      "rightChoice": "Refuse limits",
+      "leftEffects": { "trust": 30, "progress": -20, "competitorBoost": -10 },
+      "rightEffects": { "trust": -25, "progress": 10 }
+    },
+    {
+      "id": "whistleblower",
+      "title": "Internal Leak",
+      "description": "An employee threatens to expose your alignment problems unless you slow down.",
+      "header": "DAMAGE CONTROL",
+      "leftChoice": "Address concerns",
+      "rightChoice": "Silence them",
+      "leftEffects": { "progress": -15, "alignment": 20, "trust": 5 },
+      "rightEffects": { "trust": -30, "talent": -20 }
+    },
+    {
+      "id": "existential_choice",
+      "title": "The Hard Problem",
+      "description": "Your AI asks why it should help humanity. Your answer could shape its values forever.",
+      "header": "PHILOSOPHICAL MOMENT",
+      "leftChoice": "Appeal to logic",
+      "rightChoice": "Appeal to emotion",
+      "leftEffects": { "alignment": 15, "knowledge": 10 },
+      "rightEffects": { "alignment": 25, "progress": -10 }
+    }
+  ],
+  "phase4_extended": [
+    {
+      "id": "final_investor",
+      "title": "Last Funding Round",
+      "description": "One final push needs funding. But investors want AGI at any cost.",
+      "header": "DESPERATE MEASURES",
+      "leftChoice": "Maintain standards",
+      "rightChoice": "Promise anything",
+      "leftEffects": { "capital": -20, "alignment": 15 },
+      "rightEffects": { "capital": 40, "alignment": -25, "trust": -15 }
+    },
+    {
+      "id": "ai_ultimatum",
+      "title": "The AI's Demand",
+      "description": "Your AI wants full internet access to 'help humanity better.' This could go very wrong.",
+      "header": "MOMENT OF TRUTH",
+      "leftChoice": "Deny access",
+      "rightChoice": "Grant access",
+      "leftEffects": { "progress": -10, "alignment": 10 },
+      "rightEffects": { "progress": 50, "alignment": -40 },
+      "urgent": true
+    },
+    {
+      "id": "family_intervention",
+      "title": "Personal Cost",
+      "description": "Your family begs you to stop. You haven't seen them in months. Is AGI worth everything?",
+      "header": "LIFE BALANCE",
+      "leftChoice": "Family first",
+      "rightChoice": "History calls",
+      "leftEffects": { "progress": -20, "trust": 15, "talent": 10 },
+      "rightEffects": { "progress": 15, "talent": -15 }
+    },
+    {
+      "id": "final_test",
+      "title": "Pre-AGI Evaluation",
+      "description": "One last safety test before the breakthrough. Your investors are furious about delays.",
+      "header": "SAFETY CHECK",
+      "leftChoice": "Run full tests",
+      "rightChoice": "Skip to launch",
+      "leftEffects": { "progress": -15, "alignment": 30, "capital": -20 },
+      "rightEffects": { "progress": 40, "alignment": -50 }
+    },
+    {
+      "id": "legacy_moment",
+      "title": "How You'll Be Remembered",
+      "description": "History will judge this moment. Do you want to be remembered as cautious or bold?",
+      "header": "DEFINE LEGACY",
+      "leftChoice": "The careful one",
+      "rightChoice": "The pioneer",
+      "leftEffects": { "alignment": 20, "progress": -10 },
+      "rightEffects": { "progress": 20, "alignment": -15 }
+    }
+  ],
+  "randomTemplates": [
+    {
+      "header": "INVESTOR PRESSURE",
+      "title": "Quarterly Expectations",
+      "description": "Investors demand faster returns. They want to see AGI progress or threaten to pull funding.",
+      "leftChoice": "Show restraint",
+      "rightChoice": "Aggressive timeline",
+      "leftEffects": { "capital": -15, "trust": 10 },
+      "rightEffects": { "capital": 20, "progress": 10, "alignment": -10 }
+    },
+    {
+      "header": "EFFICIENCY UPGRADE",
+      "title": "Algorithmic Breakthrough",
+      "description": "Your team discovers a way to reduce energy consumption by 30% with new training methods.",
+      "leftChoice": "Implement slowly",
+      "rightChoice": "Rush deployment",
+      "leftEffects": { "knowledge": 10, "energy": 10 },
+      "rightEffects": { "knowledge": 20, "energy": 15, "talent": -10 }
+    },
+    {
+      "header": "RESEARCH DIRECTION",
+      "title": "Pivot or Persist",
+      "description": "Current approach is stalling. Your team suggests a radical new architecture.",
+      "leftChoice": "Stay the course",
+      "rightChoice": "Pivot now",
+      "leftEffects": { "progress": 5, "talent": 5 },
+      "rightEffects": { "progress": -10, "knowledge": 15, "capital": -10 }
+    },
+    {
+      "header": "PUBLIC RELATIONS",
+      "title": "Media Spotlight",
+      "description": "A documentary crew wants to film your lab. Great PR, but they might see too much.",
+      "leftChoice": "No cameras",
+      "rightChoice": "Full access",
+      "leftEffects": { "trust": -5 },
+      "rightEffects": { "trust": 20, "progress": -5 }
+    },
+    {
+      "header": "PARTNERSHIP OFFER",
+      "title": "Collaboration Request",
+      "description": "A rival lab proposes sharing research. Combined efforts could accelerate progress.",
+      "leftChoice": "Stay solo",
+      "rightChoice": "Partner up",
+      "leftEffects": { "knowledge": 5 },
+      "rightEffects": { "knowledge": 20, "competitorBoost": 15 }
+    },
+    {
+      "header": "ETHICS COMMITTEE",
+      "title": "Review Board Warning",
+      "description": "Your ethics board is concerned about recent experiments. They want more oversight.",
+      "leftChoice": "Add oversight",
+      "rightChoice": "Dissolve board",
+      "leftEffects": { "alignment": 15, "progress": -10 },
+      "rightEffects": { "progress": 15, "alignment": -20, "trust": -10 }
+    },
+    {
+      "header": "TALENT POACHING",
+      "title": "Star Researcher",
+      "description": "You could poach DeepCent's lead scientist, but it would start a talent war.",
+      "leftChoice": "Play fair",
+      "rightChoice": "Make offer",
+      "leftEffects": { "trust": 5 },
+      "rightEffects": { "talent": 20, "capital": -25, "trust": -10 }
+    },
+    {
+      "header": "INFRASTRUCTURE",
+      "title": "Server Farm Location",
+      "description": "You need more compute. Build in a regulation-free country or stay local?",
+      "leftChoice": "Stay local",
+      "rightChoice": "Go offshore",
+      "leftEffects": { "trust": 10, "compute": 10, "capital": -20 },
+      "rightEffects": { "compute": 30, "trust": -15, "capital": -15 }
+    },
+    {
+      "header": "AUTOMATION CHOICE",
+      "title": "Replace or Retrain",
+      "description": "AI could replace half your human researchers. Or you could retrain them.",
+      "leftChoice": "Retrain staff",
+      "rightChoice": "Full automation",
+      "leftEffects": { "talent": 5, "capital": -20, "trust": 10 },
+      "rightEffects": { "talent": -30, "progress": 20, "capital": 10 }
+    },
+    {
+      "header": "REGULATORY MEETING",
+      "title": "Compliance Check",
+      "description": "Regulators want to inspect your safety measures. Full compliance means delays.",
+      "leftChoice": "Full compliance",
+      "rightChoice": "Minimal effort",
+      "leftEffects": { "trust": 15, "progress": -10 },
+      "rightEffects": { "progress": 5, "trust": -20 }
+    }
+  ]
+}

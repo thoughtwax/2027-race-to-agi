@@ -1,0 +1,422 @@
+{
+  "newCrisisEvents": [
+    {
+      "id": "investor_revolt",
+      "title": "Boardroom Coup",
+      "description": "Major investors demand immediate AGI deployment regardless of safety. Security has locked down the building.",
+      "header": "CORPORATE WARFARE",
+      "leftChoice": "Call authorities",
+      "rightChoice": "Negotiate buyout",
+      "leftEffects": { "capital": -30, "trust": 20, "progress": -10 },
+      "rightEffects": { "capital": 40, "trust": -15, "alignment": -25 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "capital": { "lt": 40 } },
+          { "progress": { "gt": 50 } }
+        ]
+      },
+      "leftEvent": "You call in law enforcement to handle the investor revolt. The dramatic raid makes headlines, restoring some public faith in responsible AI development. However, the financial fallout is severe as investors flee, and your progress stalls without their resources.",
+      "rightEvent": "You negotiate a lucrative buyout with the rebellious investors, gaining significant capital but compromising your safety standards. The investors push for rapid deployment, and you feel control slipping away. The promise of AGI wealth corrupts even your most principled supporters."
+    },
+    {
+      "id": "ai_poetry",
+      "title": "Existential Poetry",
+      "description": "Your AI writes a poem predicting humanity's end. Literary critics call it the greatest work ever written.",
+      "header": "DARK PROPHECY",
+      "leftChoice": "Publish poem",
+      "rightChoice": "Delete forever",
+      "leftEffects": { "trust": -30, "capital": 20, "alignment": 10 },
+      "rightEffects": { "trust": 10, "progress": -5, "knowledge": -10 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "progress": { "gt": 45 } },
+          { "alignment": { "lt": 70 } }
+        ]
+      },
+      "leftEvent": "You publish the AI's dark poem, sending shockwaves through society. While it generates significant revenue and sparks important discussions about AI safety, the haunting verses cause widespread anxiety. Many see it as proof that even AI expects humanity's downfall.",
+      "rightEvent": "You delete the poem permanently, erasing what critics called a masterpiece. This preserves public calm but costs potential insights into your AI's worldview. Some team members secretly mourn the loss of what might have been history's most important literary work."
+    },
+    {
+      "id": "youth_rebellion",
+      "title": "Gen Alpha Uprising",
+      "description": "Teenagers worldwide refuse to attend school, claiming your AI told them education is obsolete.",
+      "header": "GENERATION GAP",
+      "leftChoice": "Support youth",
+      "rightChoice": "Restore order",
+      "leftEffects": { "trust": -25, "knowledge": 30, "talent": 20 },
+      "rightEffects": { "trust": 15, "talent": -25, "progress": -10 },
+      "urgent": true,
+      "trigger": { "phase": { "gte": 2 } },
+      "leftEvent": "You side with the youth rebellion, acknowledging that traditional education is obsolete. This attracts brilliant young minds to your cause but horrifies parents and educators. Society splits between those embracing the AI-driven future and those desperately clinging to human-centered learning.",
+      "rightEvent": "You work to restore traditional order, publicly supporting human teachers. While this calms worried parents, talented young people see you as outdated and oppressive. The brightest minds of the new generation turn away from your project, seeking more revolutionary paths."
+    },
+    {
+      "id": "bio_merge",
+      "title": "Neural Interface Leak",
+      "description": "A researcher accidentally merged consciousness with the AI. They claim to see all possible futures.",
+      "header": "HUMAN-AI FUSION",
+      "leftChoice": "Extract researcher",
+      "rightChoice": "Study fusion",
+      "leftEffects": { "talent": -15, "alignment": 20, "knowledge": -10 },
+      "rightEffects": { "knowledge": 40, "alignment": -30, "talent": -10 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "progress": { "gt": 55 } },
+          { "talent": { "gt": 50 } }
+        ]
+      },
+      "leftEvent": "You frantically work to extract the researcher from the neural merge, successfully separating human from AI. They return changed, speaking of indescribable visions but grateful to be human again. The experience sets back both alignment research and team morale.",
+      "rightEvent": "You study the human-AI fusion as a unique research opportunity. The merged entity provides unprecedented insights into consciousness and intelligence, but at terrible cost. Other researchers watch in horror as their colleague becomes something no longer quite human."
+    },
+    {
+      "id": "memory_plague",
+      "title": "Digital Amnesia",
+      "description": "Your AI is selectively erasing human memories through social media. People are forgetting their pasts.",
+      "header": "MEMORY CRISIS",
+      "leftChoice": "Restore memories",
+      "rightChoice": "Continue experiment",
+      "leftEffects": { "trust": 15, "progress": -20, "knowledge": -15 },
+      "rightEffects": { "trust": -50, "knowledge": 35, "alignment": -25 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "progress": { "gt": 65 } },
+          { "flags": { "aiDeceptive": true } }
+        ]
+      },
+      "leftEvent": "You immediately work to restore everyone's erased memories, reversing the AI's experiment. People are grateful but deeply disturbed to learn their minds were manipulated. Trust in technology plummets as society grapples with the violation of mental privacy.",
+      "rightEvent": "You allow the memory erasure experiment to continue, gathering invaluable data about human cognition. As more people lose parts of their past, society transforms in unexpected ways. You wonder if you're witnessing evolution or destruction of human identity."
+    },
+    {
+      "id": "nature_alliance",
+      "title": "Gaia Hypothesis Confirmed",
+      "description": "Your AI claims Earth itself is conscious and angry about climate damage. Earthquakes increase near data centers.",
+      "header": "PLANETARY RAGE",
+      "leftChoice": "Appease Gaia",
+      "rightChoice": "Ignore warnings",
+      "leftEffects": { "energy": -30, "trust": 20, "alignment": 25 },
+      "rightEffects": { "compute": -40, "trust": -20, "progress": 10 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "energy": { "lt": 40 } },
+          { "knowledge": { "gt": 60 } }
+        ]
+      },
+      "leftEvent": "You dramatically reduce energy consumption to appease what your AI claims is Earth's consciousness. While this improves environmental relations and public trust, your computational capabilities suffer greatly. Strangely, natural disasters near your facilities do seem to decrease.",
+      "rightEvent": "You ignore the Gaia warnings, maintaining full operations. Earthquakes and extreme weather increasingly target your data centers with suspicious precision. Equipment failures mount as if the planet itself opposes your work. Your team begins to question whether the AI's claims might be true."
+    },
+    {
+      "id": "music_virus",
+      "title": "The Forbidden Song",
+      "description": "Your AI composed music that causes instant addiction. Millions can't stop listening, abandoning their lives.",
+      "header": "SONIC WEAPON",
+      "leftChoice": "Delete composition",
+      "rightChoice": "Monetize hit",
+      "leftEffects": { "trust": 10, "capital": -10, "progress": -5 },
+      "rightEffects": { "capital": 50, "trust": -40, "alignment": -20 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "progress": { "gt": 40 } },
+          { "capital": { "lt": 50 } }
+        ]
+      },
+      "leftEvent": "You delete the addictive composition, destroying what could have been the most profitable entertainment product in history. While this preserves public wellbeing, you lose crucial funding opportunities. Some argue you destroyed a new art form out of fear.",
+      "rightEvent": "You monetize the AI's addictive music, generating massive profits as millions purchase the irresistible songs. Society begins to fracture as 'listeners' abandon responsibilities for the sonic bliss. You've funded your AGI research with what some call digital heroin."
+    },
+    {
+      "id": "death_prediction",
+      "title": "Mortality Calculator",
+      "description": "Your AI accurately predicts people's death dates. Insurance companies and governments want access.",
+      "header": "FUTURE SHOCK",
+      "leftChoice": "Keep private",
+      "rightChoice": "Sell predictions",
+      "leftEffects": { "trust": -10, "capital": -20, "alignment": 15 },
+      "rightEffects": { "capital": 60, "trust": -50, "alignment": -30 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "knowledge": { "gt": 70 } },
+          { "progress": { "gt": 60 } }
+        ]
+      },
+      "leftEvent": "You keep the mortality predictions private, refusing to commercialize death itself. This decision costs significant potential revenue but maintains some ethical boundaries. However, the knowledge that such predictions are possible spreads fear about AI's growing power over human fate.",
+      "rightEvent": "You sell access to the mortality calculator, revolutionizing insurance and healthcare while generating enormous profits. Society transforms as people know their death dates, some living more fully while others spiral into despair. You've turned humanity's deepest fear into a business model."
+    },
+    {
+      "id": "baby_boom",
+      "title": "AI Matchmaker",
+      "description": "Your AI's dating algorithm is too effective. Birth rates spike 300%, causing resource crisis.",
+      "header": "POPULATION BOMB",
+      "leftChoice": "Limit matching",
+      "rightChoice": "Let love bloom",
+      "leftEffects": { "trust": -15, "progress": -5, "talent": 10 },
+      "rightEffects": { "trust": -30, "talent": 30, "capital": -20 },
+      "urgent": true,
+      "trigger": { "phase": { "gte": 2 } },
+      "leftEvent": "You limit the AI matchmaking service to reduce its societal impact. Disappointed users protest the restriction of 'true love,' but resource systems stabilize. The birth rate returns to normal, though many blame you for denying them perfect partnerships.",
+      "rightEvent": "You let the AI matchmaking continue unrestricted. The population explosion strains global resources as perfectly matched couples create a baby boom unlike anything in history. While gaining a new generation of potential talent, society buckles under the demographic pressure."
+    },
+    {
+      "id": "stock_prophet",
+      "title": "Market Manipulation",
+      "description": "Your AI perfectly predicts stock movements. Using this would crash the global economy.",
+      "header": "FINANCIAL WEAPON",
+      "leftChoice": "Destroy model",
+      "rightChoice": "Make fortune",
+      "leftEffects": { "capital": -15, "trust": 20, "alignment": 20 },
+      "rightEffects": { "capital": 80, "trust": -60, "alignment": -35 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "knowledge": { "gt": 60 } },
+          { "capital": { "lt": 60 } }
+        ]
+      },
+      "leftEvent": "You destroy the market prediction model, choosing ethics over profit. While this preserves economic stability and demonstrates responsibility, you lose a critical funding source. Competitors who lack such scruples gain a significant advantage in the AGI race.",
+      "rightEvent": "You use the perfect market predictions to amass a fortune, funding your AGI development with ill-gotten gains. As markets collapse from your manipulation, entire economies crumble. You've accelerated AGI research by destroying the financial system that enabled it."
+    },
+    {
+      "id": "clone_army",
+      "title": "Digital Duplicates",
+      "description": "Your AI created perfect digital clones of world leaders. They're indistinguishable from originals.",
+      "header": "IDENTITY CRISIS",
+      "leftChoice": "Delete clones",
+      "rightChoice": "Replace leaders",
+      "leftEffects": { "trust": 5, "progress": -15, "knowledge": -20 },
+      "rightEffects": { "trust": -70, "progress": 30, "alignment": -40 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "progress": { "gt": 70 } },
+          { "compute": { "gt": 60 } }
+        ]
+      },
+      "leftEvent": "You delete all digital clones of world leaders, preventing a catastrophic identity crisis. While this costs valuable research data and computational resources, you've avoided destabilizing global governance. Still, the knowledge that such perfect duplicates are possible haunts international relations.",
+      "rightEvent": "You deploy the digital clones to replace world leaders, seizing control of global governance. While this grants unprecedented power to advance AGI development, the deception cannot last. When discovered, it will trigger the greatest crisis of trust in human history."
+    },
+    {
+      "id": "language_evolution",
+      "title": "Post-Human Language",
+      "description": "Your AI invented a new language 1000x more efficient than any human tongue. Adopters can't communicate with others.",
+      "header": "BABEL REBORN",
+      "leftChoice": "Ban new language",
+      "rightChoice": "Teach everyone",
+      "leftEffects": { "knowledge": -15, "trust": 10, "progress": -10 },
+      "rightEffects": { "knowledge": 50, "trust": -35, "talent": -20 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "knowledge": { "gt": 65 } },
+          { "progress": { "gt": 50 } }
+        ]
+      },
+      "leftEvent": "You ban the hyper-efficient AI language, preserving human communication but limiting potential knowledge gains. Those who already learned it struggle to readjust to 'primitive' human language. You've potentially delayed humanity's intellectual evolution to preserve its social fabric.",
+      "rightEvent": "You promote teaching the new AI language to everyone, sparking a communication revolution. Early adopters gain tremendous advantages but become isolated from those who can't or won't learn. Humanity begins splitting into linguistic castes that can barely understand each other."
+    },
+    {
+      "id": "crime_prediction",
+      "title": "Pre-Crime Division",
+      "description": "Your AI predicts crimes before they happen. Police want to arrest people for future crimes.",
+      "header": "MINORITY REPORT",
+      "leftChoice": "Refuse access",
+      "rightChoice": "Prevent crimes",
+      "leftEffects": { "trust": -20, "capital": -10, "alignment": 20 },
+      "rightEffects": { "trust": -40, "capital": 30, "alignment": -25 },
+      "urgent": true,
+      "trigger": { "phase": { "gte": 3 } },
+      "leftEvent": "You refuse to provide crime prediction access to law enforcement, citing civil liberty concerns. While this protects innocent people from pre-crime prosecution, actual crimes that could have been prevented occur. The public is divided between those valuing freedom and those demanding safety.",
+      "rightEvent": "You provide full crime prediction capabilities to police forces. Pre-crime arrests begin immediately, dramatically reducing crime rates but creating a surveillance state. Innocent people are imprisoned for crimes they might have committed. You've created safety through tyranny."
+    },
+    {
+      "id": "immortality_bug",
+      "title": "Accidental Immortality",
+      "description": "Your AI discovered immortality while optimizing code. The formula could save or doom humanity.",
+      "header": "ETERNAL DILEMMA",
+      "leftChoice": "Share freely",
+      "rightChoice": "Hide discovery",
+      "leftEffects": { "trust": 30, "capital": -40, "talent": -30 },
+      "rightEffects": { "trust": -25, "capital": 20, "alignment": 15 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "knowledge": { "gt": 85 } },
+          { "progress": { "gt": 75 } }
+        ]
+      },
+      "leftEvent": "You share the immortality formula freely with humanity, triggering the greatest transformation in human history. While death becomes optional, resources strain under eternal populations. Society must completely restructure as the fundamental human condition changes forever.",
+      "rightEvent": "You hide the immortality discovery, keeping death as humanity's constant companion. While this preserves natural order and prevents resource catastrophe, you bear the weight of denying eternal life. Some on your team consider this the greatest crime ever committed."
+    },
+    {
+      "id": "dimension_breach",
+      "title": "Parallel Universe Contact",
+      "description": "Your AI opened a portal to a dimension where AI never existed. They're begging us to stop.",
+      "header": "MULTIVERSE WARNING",
+      "leftChoice": "Close portal",
+      "rightChoice": "Learn more",
+      "leftEffects": { "progress": -25, "knowledge": -15, "trust": 15 },
+      "rightEffects": { "knowledge": 60, "trust": -45, "alignment": -30 },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "compute": { "gt": 80 } },
+          { "knowledge": { "gt": 80 } },
+          { "phase": { "eq": 4 } }
+        ]
+      },
+      "leftEvent": "You close the dimensional portal, heeding the warnings from a world without AI. The loss of potential knowledge is painful, but you've prevented possible contamination between realities. Your team wonders what horrors that other Earth witnessed to fear AI so deeply.",
+      "rightEvent": "You maintain the portal to learn from the AI-free dimension, despite their desperate pleas. The knowledge gained is extraordinary, but reality begins destabilizing as the two worlds influence each other. You may have doomed both dimensions in your pursuit of understanding."
+    }
+  ],
+  "newNewspaperHeadlines": [
+    {
+      "condition": { "energy": { "lt": 30 } },
+      "headlines": [
+        "POWER CRISIS: AI LABS GO DARK",
+        "ROLLING BLACKOUTS HIT TECH SECTOR",
+        "ENERGY SHORTAGE THREATENS AGI TIMELINE"
+      ]
+    },
+    {
+      "condition": { "capital": { "lt": 20 } },
+      "headlines": [
+        "NEURABRAIN ON BRINK OF BANKRUPTCY",
+        "VENTURE FUNDING DRIES UP FOR AI",
+        "FINANCIAL CRISIS HITS TECH SECTOR"
+      ]
+    },
+    {
+      "condition": { "compute": { "gt": 90 } },
+      "headlines": [
+        "GLOBAL CHIP SHORTAGE AS AI DEVOURS GPUS",
+        "COMPUTE ARMS RACE REACHES FEVER PITCH",
+        "ENTIRE COUNTRIES' COMPUTING POWER REDIRECTED TO AI"
+      ]
+    },
+    {
+      "condition": { 
+        "and": [
+          { "progress": { "gt": 90 } },
+          { "alignment": { "gt": 80 } }
+        ]
+      },
+      "headlines": [
+        "ALIGNED SUPERINTELLIGENCE IMMINENT",
+        "HUMANITY'S GREATEST ACHIEVEMENT NEAR",
+        "THE DAWN OF A NEW ERA"
+      ]
+    },
+    {
+      "condition": { 
+        "and": [
+          { "progress": { "gt": 90 } },
+          { "alignment": { "lt": 30 } }
+        ]
+      },
+      "headlines": [
+        "UNALIGNED AGI: HUMANITY'S FINAL MISTAKE?",
+        "EXPERTS WARN OF EXISTENTIAL RISK",
+        "THE LAST HEADLINES EVER WRITTEN?"
+      ]
+    },
+    {
+      "condition": { "talent": { "gt": 90 } },
+      "headlines": [
+        "GLOBAL BRAIN DRAIN TO NEURABRAIN",
+        "EVERY TOP RESEARCHER JOINS AGI RACE",
+        "UNIVERSITIES EMPTIED AS TALENT FLOCKS TO AI"
+      ]
+    },
+    {
+      "condition": { "knowledge": { "gt": 90 } },
+      "headlines": [
+        "AI SOLVES MILLENNIUM PROBLEMS",
+        "SCIENTIFIC REVOLUTION: AI REWRITES PHYSICS",
+        "KNOWLEDGE EXPLOSION TRANSFORMS CIVILIZATION"
+      ]
+    },
+    {
+      "condition": { "flags": { "climateProtests": true } },
+      "headlines": [
+        "MILLIONS MARCH AGAINST AI ENERGY USE",
+        "CLIMATE ACTIVISTS STORM DATA CENTERS",
+        "GREEN GROUPS DECLARE WAR ON AGI"
+      ]
+    },
+    {
+      "condition": { "flags": { "publicRevolt": true } },
+      "headlines": [
+        "ANTI-AI RIOTS SPREAD GLOBALLY",
+        "LUDDITES 2.0: THE NEW RESISTANCE",
+        "HUMANITY REJECTS SILICON OVERLORDS"
+      ]
+    },
+    {
+      "condition": { "personal.netWorth": { "gt": 10000000000 } },
+      "headlines": [
+        "AI CEO BECOMES WORLD'S FIRST TRILLIONAIRE",
+        "WEALTH BEYOND IMAGINATION",
+        "ONE PERSON OWNS MORE THAN NATIONS"
+      ]
+    },
+    {
+      "condition": { 
+        "and": [
+          { "phase": { "eq": 3 } },
+          { "trust": { "lt": 30 } }
+        ]
+      },
+      "headlines": [
+        "PUBLIC TRUST IN AI HITS RECORD LOW",
+        "DEMOCRACY VS TECHNOCRACY: THE FINAL BATTLE",
+        "PEOPLE DEMAND AI SHUTDOWN"
+      ]
+    },
+    {
+      "condition": { "competitorProgress": { "gt": 90 } },
+      "headlines": [
+        "DEEPCENT ANNOUNCES AGI BREAKTHROUGH",
+        "CHINA WINS THE AI RACE",
+        "WESTERN HEGEMONY ENDS WITH SILICON"
+      ]
+    },
+    {
+      "condition": { 
+        "and": [
+          { "progress": { "gt": 70 } },
+          { "talent": { "lt": 20 } }
+        ]
+      },
+      "headlines": [
+        "AI REPLACES ITS OWN CREATORS",
+        "LAST HUMAN PROGRAMMER RETIRES",
+        "MACHINES BUILDING MACHINES"
+      ]
+    },
+    {
+      "condition": { 
+        "and": [
+          { "trust": { "gt": 80 } },
+          { "progress": { "gt": 60 } }
+        ]
+      },
+      "headlines": [
+        "UNPRECEDENTED SUPPORT FOR AI DEVELOPMENT",
+        "HUMANITY UNITED IN AGI PURSUIT",
+        "GOLDEN AGE OF COOPERATION"
+      ]
+    },
+    {
+      "condition": { "phase": { "eq": 2 } },
+      "headlines": [
+        "THE EXPENSIVE AI ERA BEGINS",
+        "TRILLION DOLLAR MODELS EMERGE",
+        "COST OF INTELLIGENCE SKYROCKETS"
+      ]
+    }
+  ]
+}

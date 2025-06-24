@@ -1,0 +1,104 @@
+/* Optimized Drag Styles */
+
+/* GPU-accelerated card */
+.card {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Dragging state */
+.card.dragging {
+    cursor: grabbing;
+    transition: none !important;
+}
+
+/* Exit animations using GPU-accelerated transforms */
+.card.exiting {
+    pointer-events: none;
+}
+
+.card.exiting.exit-left {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translate3d(-200%, 0, 0) rotate(-25deg) scale(0.95) !important;
+}
+
+.card.exiting.exit-right {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translate3d(200%, 0, 0) rotate(25deg) scale(0.95) !important;
+}
+
+/* Button feedback states */
+.choice-button {
+    transition: all 0.15s ease-out;
+    transform: scale(1);
+}
+
+.choice-button.hover {
+    transform: scale(1.1);
+    border-width: 2px;
+}
+
+.choice-button.hover.choice-left {
+    border-color: var(--color-red);
+    color: var(--color-red);
+}
+
+.choice-button.hover.choice-right {
+    border-color: var(--color-green);
+    color: var(--color-green);
+}
+
+.choice-button.active {
+    transform: scale(1.15);
+}
+
+.choice-button.active.choice-left {
+    background-color: var(--color-red);
+    border-color: var(--color-red);
+    color: white;
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.5);
+}
+
+.choice-button.active.choice-left svg {
+    color: white;
+}
+
+.choice-button.active.choice-right {
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+    color: white;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+.choice-button.active.choice-right svg {
+    color: white;
+}
+
+/* Prevent text selection during drag */
+.dragging * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Mobile touch optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .card {
+        touch-action: pan-y;
+    }
+    
+    .card.dragging {
+        touch-action: none;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .card.exiting,
+    .choice-button {
+        transition-duration: 0.01ms !important;
+    }
+}

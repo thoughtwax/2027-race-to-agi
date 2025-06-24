@@ -1,0 +1,227 @@
+/* Newspaper Styles */
+.newspaper-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+
+.newspaper-modal.active {
+    opacity: 1;
+}
+
+.newspaper {
+    background-color: #f5f5dc;
+    color: #000;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    font-family: Georgia, serif;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    position: relative;
+    transform: rotate(-1deg);
+    animation: newspaperSlide 0.5s ease-out;
+}
+
+@keyframes newspaperSlide {
+    from {
+        transform: translateY(100vh) rotate(-1deg);
+    }
+    to {
+        transform: translateY(0) rotate(-1deg);
+    }
+}
+
+.newspaper-header {
+    background-color: #000;
+    color: #f5f5dc;
+    padding: var(--spacing-lg);
+    text-align: center;
+    border-bottom: 4px double #000;
+}
+
+.newspaper-title {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin: 0;
+    text-transform: uppercase;
+    font-family: Impact, sans-serif;
+}
+
+.newspaper-date {
+    font-size: 14px;
+    margin-top: var(--spacing-sm);
+    letter-spacing: 2px;
+}
+
+.newspaper-content {
+    padding: var(--spacing-xl);
+}
+
+.newspaper-main {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
+    border-bottom: 1px solid #000;
+}
+
+.newspaper-headline {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+}
+
+.newspaper-subtitle {
+    font-size: 18px;
+    font-style: italic;
+    color: #333;
+    margin-bottom: var(--spacing-md);
+}
+
+.newspaper-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.newspaper-article {
+    padding-right: var(--spacing-md);
+}
+
+.newspaper-article-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 2px solid #000;
+    padding-bottom: var(--spacing-xs);
+}
+
+.newspaper-article-content {
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+.newspaper-opinion {
+    background-color: #e8e8d0;
+    padding: var(--spacing-md);
+    border: 1px solid #000;
+    margin-bottom: var(--spacing-xl);
+}
+
+.newspaper-opinion-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.newspaper-opinion-author {
+    font-size: 14px;
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+}
+
+.newspaper-opinion-content {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.newspaper-stock {
+    background-color: #000;
+    color: #f5f5dc;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.newspaper-stock-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stock-positive {
+    color: #4ade80;
+}
+
+.stock-negative {
+    color: #f87171;
+}
+
+.newspaper-breaking {
+    background-color: #dc2626;
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: 0 calc(-1 * var(--spacing-xl)) var(--spacing-xl);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: breakingScroll 15s linear infinite;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@keyframes breakingScroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.newspaper-close {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: #000;
+    color: #f5f5dc;
+    border: none;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.newspaper-close:hover {
+    background: #333;
+}
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+    .newspaper {
+        transform: none;
+    }
+    
+    .newspaper-title {
+        font-size: 32px;
+    }
+    
+    .newspaper-headline {
+        font-size: 24px;
+    }
+    
+    .newspaper-columns {
+        grid-template-columns: 1fr;
+    }
+    
+    .newspaper-content {
+        padding: var(--spacing-lg);
+    }
+}

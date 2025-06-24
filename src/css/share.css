@@ -1,0 +1,47 @@
+/* Share System Styles */
+
+.share-container {
+    margin-top: auto;
+    padding-top: calc(var(--spacing-xl) * 2);
+    text-align: center;
+}
+
+.share-container h3 {
+    margin: 0 0 var(--spacing-md) 0;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.share-links {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.share-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    margin: 0 var(--spacing-lg);
+}
+
+.share-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+
+/* Responsive */
+@media (max-width: 480px) {
+    .share-buttons {
+        flex-direction: column;
+    }
+    
+    .share-button {
+        width: 100%;
+        justify-content: center;
+    }
+}

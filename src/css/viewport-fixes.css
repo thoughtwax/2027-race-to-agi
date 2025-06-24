@@ -1,0 +1,120 @@
+/* Viewport Fixes for Small Screens */
+
+/* Prevent address bar issues on mobile */
+@supports (-webkit-touch-callout: none) {
+    /* iOS Safari */
+    #app {
+        height: -webkit-fill-available;
+    }
+}
+
+/* Small viewport height (landscape phones, etc) */
+@media (max-height: 600px) {
+    :root {
+        --header-height: 50px;
+        --footer-height: 50px;
+        --spacing-sm: 6px;
+        --spacing-md: 12px;
+        --spacing-lg: 18px;
+        --spacing-xl: 24px;
+    }
+    
+    #card-container {
+        height: min(380px, 55vh);
+        margin: var(--spacing-sm) auto;
+    }
+    
+    .card {
+        padding: var(--spacing-md);
+    }
+    
+    .card-header {
+        font-size: 10px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .card-title {
+        font-size: 18px;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .card-description {
+        font-size: 14px;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .choice-buttons {
+        gap: 40px;
+        margin-top: var(--spacing-md);
+    }
+    
+    .choice-button {
+        width: 48px;
+        height: 48px;
+    }
+    
+    #resources {
+        padding: var(--spacing-sm);
+    }
+    
+    .resources-container {
+        gap: var(--spacing-sm);
+    }
+    
+    .resources-group {
+        gap: 4px;
+    }
+    
+    .resource-bar-container {
+        height: 12px;
+    }
+}
+
+/* Very small height (< 500px) */
+@media (max-height: 500px) {
+    #resources {
+        display: none; /* Hide resources on very small screens */
+    }
+    
+    #card-container {
+        height: min(320px, 60vh);
+    }
+    
+    .card-title {
+        font-size: 16px;
+    }
+    
+    .card-description {
+        font-size: 13px;
+    }
+}
+
+/* Handle notch/safe areas on modern phones */
+@supports (padding: max(0px)) {
+    #app {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}
+
+/* Ensure modal fits on small screens */
+@media (max-height: 700px) {
+    .modal-content {
+        max-height: 90vh;
+        margin: var(--spacing-sm);
+        padding: var(--spacing-lg);
+    }
+}
+
+/* Fix for keyboard appearing on mobile */
+@media (max-width: 768px) {
+    body.keyboard-visible #game-area {
+        padding-bottom: 0;
+    }
+    
+    body.keyboard-visible #footer {
+        display: none;
+    }
+}

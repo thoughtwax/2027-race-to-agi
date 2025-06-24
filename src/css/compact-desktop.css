@@ -1,0 +1,69 @@
+/* Desktop layout - keep header separate */
+@media (min-width: 1200px) {
+    /* Keep header visible and styled consistently */
+    #header {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        height: 40px;
+    }
+    
+    #resources {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        background: transparent;
+    }
+    
+    .resources-group {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-md);
+        flex: 1;
+    }
+    
+    .resource {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0;
+    }
+    
+    .resource-label {
+        font-size: 10px;
+        flex: 0 0 auto;
+        min-width: 60px;
+    }
+    
+    .resource-bar-container {
+        flex: 1;
+        height: 10px;
+        min-width: 40px;
+    }
+    
+    
+    /* More space for cards */
+    #game-area {
+        padding: var(--spacing-xl);
+        padding-top: 100px;
+    }
+    
+    #card-container {
+        height: calc(100vh - 40px - var(--footer-height) - 180px);
+        max-height: 600px;
+    }
+}
+
+/* Even more compact for very large screens */
+@media (min-width: 1600px) {
+    .resource-label {
+        font-size: 11px;
+    }
+    
+    .resource-bar-container {
+        height: 10px;
+    }
+    
+    #card-container {
+        height: calc(100vh - 40px - var(--footer-height) - 160px);
+        max-height: 700px;
+        max-width: 550px;
+    }
+}

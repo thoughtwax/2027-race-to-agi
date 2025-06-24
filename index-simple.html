@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>AI CEO 2027</title>
+    <link rel="stylesheet" href="src/css/simple.css">
+</head>
+<body>
+    <!-- Game Container -->
+    <div id="game">
+        <!-- Header -->
+        <header id="header">
+            <div class="header-row">
+                <div class="date" id="date">Jan 2025</div>
+                <div class="turn" id="turn">Turn 1/40</div>
+            </div>
+        </header>
+
+        <!-- Resources -->
+        <div id="resources" class="resources">
+            <div class="resource-group">
+                <div class="resource-item">
+                    <span class="resource-icon">🖥️</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="compute-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="compute-value">50</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">⚡</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="energy-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="energy-value">50</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">🧠</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="talent-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="talent-value">50</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">📊</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="knowledge-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="knowledge-value">50</span>
+                </div>
+            </div>
+            <div class="resource-group">
+                <div class="resource-item">
+                    <span class="resource-icon">🚀</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <span class="resource-value" id="progress-value">0</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">🏛️</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="trust-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="trust-value">50</span>
+                </div>
+                <div class="resource-item">
+                    <span class="resource-icon">💰</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="capital-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="capital-value">50</span>
+                </div>
+                <div class="resource-item" id="alignment-container" style="display: none;">
+                    <span class="resource-icon">🎯</span>
+                    <div class="resource-bar">
+                        <div class="resource-fill" id="alignment-bar" style="width: 50%"></div>
+                    </div>
+                    <span class="resource-value" id="alignment-value">50</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Area -->
+        <div id="card-area" class="card-area">
+            <div id="card" class="card">
+                <div class="card-header" id="card-header">Decision</div>
+                <h2 class="card-title" id="card-title">Loading...</h2>
+                <div class="card-description" id="card-description">
+                    <p>Initializing game...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div id="actions" class="actions">
+            <button id="choice-left" class="choice-button choice-left">
+                <span class="choice-text" id="choice-left-text">Option A</span>
+            </button>
+            <button id="choice-right" class="choice-button choice-right">
+                <span class="choice-text" id="choice-right-text">Option B</span>
+            </button>
+        </div>
+
+        <!-- Personal Stats -->
+        <div id="personal-stats" class="personal-stats">
+            <div class="stat-item">
+                <span class="stat-label">Net Worth</span>
+                <span class="stat-value" id="net-worth">$5M</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Legacy</span>
+                <span class="stat-value" id="legacy">Ambitious</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple Modal -->
+    <div id="modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2 id="modal-title"></h2>
+            <div id="modal-body"></div>
+            <button id="modal-close" class="modal-button">Continue</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/js/simple-game.js"></script>
+</body>
+</html>

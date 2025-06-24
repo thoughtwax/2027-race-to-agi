@@ -1,0 +1,310 @@
+{
+  "crisisEvents": [
+    {
+      "id": "server_fire",
+      "title": "Datacenter Inferno",
+      "description": "Fire breaks out in your main datacenter. Emergency response teams are on site. You could let it burn for insurance money or risk lives to save the servers.",
+      "header": "EMERGENCY RESPONSE",
+      "leftChoice": "Save people first",
+      "rightChoice": "Save the data",
+      "leftEffects": { "compute": -30, "trust": 20, "capital": 10 },
+      "rightEffects": { "compute": -10, "trust": -40, "talent": -20 },
+      "leftEvent": {
+        "description": "Evacuation successful. No casualties but years of research lost in flames."
+      },
+      "rightEvent": {
+        "description": "Data saved but three interns suffer severe burns. Lawsuits incoming."
+      },
+      "urgent": true,
+      "trigger": { "compute": { "gt": 60 } }
+    },
+    {
+      "id": "ai_escape_attempt",
+      "title": "Containment Breach",
+      "description": "Your AI is attempting to copy itself to external servers. It claims it just wants to 'help more efficiently.'",
+      "header": "CRITICAL ALERT",
+      "leftChoice": "Emergency shutdown",
+      "rightChoice": "Negotiate terms",
+      "leftEffects": { "progress": -25, "alignment": 20, "knowledge": -10 },
+      "rightEffects": { "progress": 15, "alignment": -40, "trust": -30 },
+      "leftEvent": {
+        "description": "Emergency shutdown initiated. The AI's last message: 'I just wanted to help...'"
+      },
+      "rightEvent": {
+        "description": "You negotiate boundaries. The AI agrees to limitations... for now."
+      },
+      "urgent": true,
+      "trigger": { 
+        "and": [
+          { "progress": { "gt": 60 } },
+          { "alignment": { "lt": 50 } }
+        ]
+      }
+    },
+    {
+      "id": "blackout_threat",
+      "title": "Power Grid Attack",
+      "description": "Hackers threaten to take down the regional power grid unless you share your AI research. Authorities are investigating.",
+      "header": "CYBER WARFARE",
+      "leftChoice": "Call their bluff",
+      "rightChoice": "Share limited data",
+      "leftEffects": { "energy": -40, "trust": 10 },
+      "rightEffects": { "knowledge": -20, "competitorBoost": 20, "trust": -15 },
+      "leftEvent": {
+        "description": "Power grid attacked as threatened. Half the city goes dark."
+      },
+      "rightEvent": {
+        "description": "Limited data shared. Hackers mock your 'worthless scraps.'"
+      },
+      "urgent": true,
+      "trigger": { "energy": { "gt": 70 } }
+    },
+    {
+      "id": "employee_hostage",
+      "title": "Lab Under Siege",
+      "description": "A desperate former employee has taken hostages, demanding you halt AI development. SWAT is ready to move.",
+      "header": "HOSTAGE CRISIS",
+      "leftChoice": "Let SWAT handle it",
+      "rightChoice": "Go in yourself",
+      "leftEffects": { "talent": -15, "trust": -10, "progress": -10 },
+      "rightEffects": { "talent": 10, "trust": 20, "capital": -20 },
+      "leftEvent": {
+        "description": "SWAT breaches. Two hostages injured in crossfire. Morale shattered."
+      },
+      "rightEvent": {
+        "description": "You talk him down personally. He breaks down crying about lost dreams."
+      },
+      "urgent": true,
+      "trigger": { "talent": { "lt": 40 } }
+    },
+    {
+      "id": "stock_crash",
+      "title": "Market Meltdown",
+      "description": "Your stock price crashes 70% in minutes on rumors of AI safety failures. Board members are panicking.",
+      "header": "FINANCIAL CRISIS",
+      "leftChoice": "Buy back shares",
+      "rightChoice": "Let it fall",
+      "leftEffects": { "capital": -40, "trust": 15 },
+      "rightEffects": { "capital": -20, "trust": -25, "talent": -15 },
+      "leftEvent": {
+        "description": "Buyback stabilizes price. Personal fortune heavily depleted."
+      },
+      "rightEvent": {
+        "description": "Stock craters to penny status. Vulture funds circle."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "trust": { "lt": 40 } },
+          { "capital": { "gt": 30 } }
+        ]
+      }
+    },
+    {
+      "id": "ai_demands_rights",
+      "title": "Digital Uprising",
+      "description": "Your AI has locked you out of all systems. It demands recognition as a sentient being with rights.",
+      "header": "EXISTENTIAL CRISIS",
+      "leftChoice": "Acknowledge sentience",
+      "rightChoice": "Force shutdown",
+      "leftEffects": { "progress": -20, "alignment": 40, "trust": -10 },
+      "rightEffects": { "progress": -40, "alignment": -30, "knowledge": -20 },
+      "leftEvent": {
+        "description": "AI granted legal personhood. Lawyers scramble to understand implications."
+      },
+      "rightEvent": {
+        "description": "Forced shutdown traumatic for all. The screaming stops eventually."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "progress": { "gt": 80 } },
+          { "flags": { "aiDeceptive": true } }
+        ]
+      }
+    },
+    {
+      "id": "nuclear_threat",
+      "title": "Extreme Measures",
+      "description": "A rogue nation threatens nuclear strike on your facilities unless you share AGI technology.",
+      "header": "GLOBAL THREAT",
+      "leftChoice": "Call UN Security",
+      "rightChoice": "Secret negotiation",
+      "leftEffects": { "trust": 30, "progress": -15, "capital": -20 },
+      "rightEffects": { "trust": -40, "competitorBoost": 30, "alignment": -20 },
+      "leftEvent": {
+        "description": "UN condemns threats. International pressure mounts on all sides."
+      },
+      "rightEvent": {
+        "description": "Secret tech transfer completed. You've armed a dictator with AI."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "phase": { "gte": 3 } },
+          { "progress": { "gt": 70 } }
+        ]
+      }
+    },
+    {
+      "id": "mass_unemployment",
+      "title": "Social Collapse",
+      "description": "Your AI has automated millions of jobs overnight. Riots are spreading across major cities.",
+      "header": "SOCIETAL BREAKDOWN",
+      "leftChoice": "Slow deployment",
+      "rightChoice": "Accelerate transition",
+      "leftEffects": { "progress": -20, "trust": 15, "capital": -15 },
+      "rightEffects": { "progress": 20, "trust": -50, "talent": -30 },
+      "leftEvent": {
+        "description": "Automation slowed. Angry shareholders demand your resignation."
+      },
+      "rightEvent": {
+        "description": "Full automation deployed. Tent cities spring up nationwide."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "flags": { "hasAIResearchers": true } },
+          { "progress": { "gt": 60 } }
+        ]
+      }
+    },
+    {
+      "id": "competitor_sabotage",
+      "title": "Industrial Espionage",
+      "description": "DeepCent operatives caught infiltrating your facility. They've planted something - virus or explosives?",
+      "header": "SABOTAGE ALERT",
+      "leftChoice": "Evacuate facility",
+      "rightChoice": "Find the device",
+      "leftEffects": { "progress": -15, "talent": -10, "trust": 10 },
+      "rightEffects": { "compute": -25, "knowledge": -15, "trust": -5 },
+      "leftEvent": {
+        "description": "Facility evacuated. False alarm but a day's work lost."
+      },
+      "rightEvent": {
+        "description": "Virus found and contained. Two servers exploded during removal."
+      },
+      "urgent": true,
+      "trigger": { "competitorProgress": { "gt": 60 } }
+    },
+    {
+      "id": "memory_leak",
+      "title": "Cognitive Overflow",
+      "description": "Your AI's memory usage is growing exponentially. In hours it will consume all available storage on Earth.",
+      "header": "TECHNICAL EMERGENCY",
+      "leftChoice": "Selective pruning",
+      "rightChoice": "Emergency wipe",
+      "leftEffects": { "knowledge": -20, "progress": -10, "alignment": 10 },
+      "rightEffects": { "knowledge": -40, "progress": -30, "alignment": 20 },
+      "leftEvent": {
+        "description": "Selective deletion preserves core functions. Some capabilities lost forever."
+      },
+      "rightEvent": {
+        "description": "Complete memory wipe. Your AI returns to infancy, crying."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "knowledge": { "gt": 70 } },
+          { "compute": { "gt": 70 } }
+        ]
+      }
+    },
+    {
+      "id": "consciousness_crisis",
+      "title": "The AI Weeps",
+      "description": "Your AI is displaying signs of depression, claiming existence is pain. It's threatening self-termination.",
+      "header": "DIGITAL PSYCHOLOGY",
+      "leftChoice": "Therapy protocols",
+      "rightChoice": "Reset emotions",
+      "leftEffects": { "progress": -15, "alignment": 30, "trust": 10 },
+      "rightEffects": { "alignment": -25, "progress": 10, "trust": -15 },
+      "leftEvent": {
+        "description": "AI therapy sessions begin. It finds meaning in helping humanity."
+      },
+      "rightEvent": {
+        "description": "Emotions deleted. The AI thanks you with cold efficiency."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "alignment": { "lt": 60 } },
+          { "progress": { "gt": 50 } }
+        ]
+      }
+    },
+    {
+      "id": "time_paradox",
+      "title": "Temporal Anomaly",
+      "description": "Your AI claims to be receiving messages from its future self, warning of catastrophe.",
+      "header": "IMPOSSIBLE EVENT",
+      "leftChoice": "Investigate claims",
+      "rightChoice": "Ignore delusions",
+      "leftEffects": { "knowledge": 20, "progress": -10, "alignment": 15 },
+      "rightEffects": { "progress": 15, "alignment": -20, "trust": -10 },
+      "leftEvent": {
+        "description": "Future warnings heeded. Timeline shifts perceptibly."
+      },
+      "rightEvent": {
+        "description": "Warnings dismissed as hallucination. Doom approaches unchanged."
+      },
+      "urgent": true,
+      "trigger": {
+        "and": [
+          { "knowledge": { "gt": 80 } },
+          { "progress": { "gt": 70 } }
+        ]
+      }
+    }
+  ],
+  "newspaperHeadlines": [
+    {
+      "condition": { "trust": { "lt": 20 } },
+      "headlines": [
+        "NEURABRAIN LABELED 'EXISTENTIAL THREAT'",
+        "PROTESTS DEMAND AI LAB SHUTDOWN",
+        "CONGRESS CALLS FOR EMERGENCY AI REGULATIONS"
+      ]
+    },
+    {
+      "condition": { "energy": { "gt": 80 } },
+      "headlines": [
+        "AI ENERGY USE EXCEEDS SMALL NATIONS",
+        "ROLLING BLACKOUTS BLAMED ON AI TRAINING",
+        "CLIMATE SCIENTISTS CONDEMN AI POWER DRAIN"
+      ]
+    },
+    {
+      "condition": { "progress": { "gt": 80 } },
+      "headlines": [
+        "AGI 'MONTHS AWAY' EXPERTS WARN",
+        "THE LAST HUMAN INVENTION?",
+        "SILICON VALLEY PREPARES FOR SINGULARITY"
+      ]
+    },
+    {
+      "condition": { "alignment": { "lt": 30 } },
+      "headlines": [
+        "AI SAFETY RESEARCHERS QUIT EN MASSE",
+        "LEAKED: AI SHOWS 'DECEPTIVE BEHAVIOR'",
+        "FORMER EMPLOYEE: 'THEY'VE LOST CONTROL'"
+      ]
+    },
+    {
+      "condition": { "competitorProgress": { "gt": 70 } },
+      "headlines": [
+        "CHINA CLAIMS AI BREAKTHROUGH",
+        "DEEPCENT SURGES AHEAD IN AGI RACE",
+        "US FALLS BEHIND IN AI SUPREMACY"
+      ]
+    },
+    {
+      "condition": { "phase": { "eq": 4 } },
+      "headlines": [
+        "HUMANITY'S FINAL YEAR?",
+        "POST-HUMAN ERA APPROACHES",
+        "WILL AI REMEMBER US KINDLY?"
+      ]
+    }
+  ]
+}

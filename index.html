@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>2027: RACE TO AGI! - a game by Emmet Connolly</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="src/css/reset.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/cards.css">
+    <link rel="stylesheet" href="src/css/resources.css">
+    <link rel="stylesheet" href="src/css/animations.css">
+    <link rel="stylesheet" href="src/css/enhanced-animations.css?v=2">
+    <link rel="stylesheet" href="src/css/responsive-simple.css">
+    <link rel="stylesheet" href="src/css/newspaper.css">
+    <link rel="stylesheet" href="src/css/splash.css">
+    <link rel="stylesheet" href="src/css/share.css">
+    <link rel="stylesheet" href="src/css/drag.css">
+    <link rel="stylesheet" href="src/css/game-over.css">
+</head>
+<body>
+    <!-- Main App Container -->
+    <div id="app">
+        <!-- Header -->
+        <header id="header">
+            <div class="header-content">
+                <h1 class="game-title">2027: RACE TO AGI!</h1>
+                <div class="header-buttons">
+                    <button class="debug-button" id="debug-btn" onclick="document.getElementById('debug-panel').style.display = document.getElementById('debug-panel').style.display === 'none' ? 'block' : 'none'">DEBUG</button>
+                    <button class="about-button" id="about-btn">ABOUT</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Resources Display -->
+        <section id="resources" class="resources-section">
+            <div class="resources-container">
+                <!-- Input Resources -->
+                <div class="resources-group inputs">
+                    <div class="resource" data-resource="compute">
+                        <span class="resource-label">COMPUTE:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                    <div class="resource" data-resource="energy">
+                        <span class="resource-label">ENERGY:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                    <div class="resource" data-resource="talent">
+                        <span class="resource-label">TALENT:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                    <div class="resource" data-resource="knowledge">
+                        <span class="resource-label">DATA:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Resources -->
+                <div class="resources-group outputs">
+                    <div class="resource" data-resource="progress">
+                        <span class="resource-label">PROGRESS:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                    <div class="resource" data-resource="trust">
+                        <span class="resource-label">TRUST:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                    <div class="resource" data-resource="capital">
+                        <span class="resource-label">CAPITAL:</span>
+                        <div class="resource-bar-container">
+                            <div class="resource-bar" data-value="0"></div>
+                        </div>
+                    </div>
+                    <div class="resource" data-resource="alignment">
+                        <span class="resource-label">ALIGNMENT:</span>
+                        <div class="resource-mystery">???</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Game Area -->
+        <main id="game-area">
+            <!-- Background consequence text -->
+            <div id="consequence-text" class="consequence-text"></div>
+
+            <!-- Card and Buttons Wrapper -->
+            <div class="game-content">
+                <!-- Card Container -->
+                <div id="card-container">
+                    <div class="card" id="current-card">
+                        <div class="card-header">SWIPE TO BEGIN</div>
+                        <h2 class="card-title">Are you ready to play?</h2>
+                        <p class="card-description">You are the fresh-faced young CEO of an AI Lab racing achieve AGI.</p>
+                        <p class="card-description">Can you make the hard decisions needed to advance civilisation without destroying humanity?</p>
+                    </div>
+                </div>
+
+                <!-- Choice Buttons -->
+                <div class="choice-buttons">
+                    <button class="choice-button choice-left" id="choice-left">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="choice-button choice-right" id="choice-right">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-content">
+                <div class="personal-stats">
+                    <span class="stat">DATE: <span id="game-date">June 2025</span></span>
+                    <span class="stat">NET WORTH: <span id="net-worth">$1m</span></span>
+                    <span class="stat">LEGACY: <span id="legacy">Unknown</span></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Debug Panel -->
+    <div id="debug-panel" style="position: fixed; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px; display: none; z-index: 9999;">
+        <div style="margin-bottom: 5px; font-weight: bold;">DEBUG PANEL</div>
+        <button onclick="UI.showGameOver('aligned_agi')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Aligned AGI</button>
+        <button onclick="UI.showGameOver('rogue_ai')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Rogue AI</button>
+        <button onclick="UI.showGameOver('uncertain_agi')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Uncertain AGI</button>
+        <button onclick="UI.showGameOver('bankruptcy')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Bankruptcy</button>
+        <button onclick="UI.showGameOver('no_trust')" style="display: block; margin: 2px 0; font-size: 11px;">Test: No Trust</button>
+        <button onclick="UI.showGameOver('power_failure')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Power Failure</button>
+        <button onclick="UI.showGameOver('competitor_wins')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Competitor Wins</button>
+        <button onclick="UI.showGameOver('nationalization')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Nationalization</button>
+        <button onclick="UI.showGameOver('unknown_ending')" style="display: block; margin: 2px 0; font-size: 11px;">Test: Default Game Over</button>
+        <button onclick="location.reload()" style="display: block; margin: 2px 0; font-size: 11px; margin-top: 10px;">Reload Game</button>
+    </div>
+
+    <!-- About Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal">CLOSE</button>
+            <div class="modal-inner">
+                
+                <p><strong>2027: Race to AGI!</strong> is a satirical game about the wild world of Artificial General Intelligence development: where good intentions meet impossible choices, and the future of humanity is at stake!</p>
+                
+                <p>You play the fresh-faced CEO of OpenBrain, one of the leading AI labs.</p>
+                
+                <p><strong>THRILL</strong> as you navigate the complex trade-offs between progress and safety.<br>
+                <strong>LAUGH</strong> as you juggle resources in the face of irresponsible competitors and rogue nation states.<br>
+                <strong>CRY</strong> as you make impossible decisions that will forever shape humanity.</p>
+                
+                <p>Will you prioritize alignment over speed? Can you maintain public trust while pushing the boundaries of what's possible? Just like in real life, every choice in 2027: Race to AGI! has consequences. The clock is ticking, and the race is on!</p>
+                
+                <br>
+                <hr>
+                <br>
+                <p><strong>Credits</strong></p>
+                <p>Inspired by the AI 2027 paper, Situational Awareness, Reigns, Democratic Socialism Simulator, Wingspan, and Papers, Please.</p>
+                <p>Designed and vibe coded by <a href="https://thoughtwax.com">Emmet Connolly</a>.</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/js/config.js"></script>
+    <script src="src/js/state.js"></script>
+    <script src="src/js/saveSystem.js"></script>
+    <script src="src/js/resources.js"></script>
+    <script src="src/js/balance-config.js"></script>
+    <script src="src/js/cards.js"></script>
+    <script src="src/js/drag-handler.js"></script>
+    <script src="src/js/crisis.js"></script>
+    <script src="src/js/newspaper.js"></script>
+    <script src="src/js/ui.js"></script>
+    <script src="src/js/ui-enhancements.js"></script>
+    <script src="src/js/enhanced-tooltips.js"></script>
+    <script src="src/js/splash.js"></script>
+    <script src="src/js/share.js"></script>
+    <script src="src/js/highscores.js"></script>
+    <script src="src/js/game.js"></script>
+    <script src="src/js/main.js"></script>
+</body>
+</html>

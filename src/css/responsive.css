@@ -1,0 +1,375 @@
+/* Responsive Design */
+
+/* Base mobile design (up to 428px) is in main.css */
+
+/* Larger phones and small tablets */
+@media (min-width: 429px) and (max-width: 767px) {
+    #app {
+        max-width: 100%;
+        box-shadow: none;
+    }
+    
+    #card-container {
+        max-width: 400px;
+    }
+    
+    .card {
+        padding: calc(var(--spacing-xl) * 1.2);
+    }
+    
+    .card-title {
+        font-size: 24px;
+    }
+    
+    .card-description {
+        font-size: 17px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    :root {
+        --header-height: 50px;
+        --footer-height: 60px;
+    }
+    
+    #app {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+    
+    .game-title {
+        font-size: 11px;
+    }
+    
+    .about-button {
+        font-size: 11px;
+    }
+    
+    #resources {
+        padding: var(--spacing-xl) var(--spacing-lg);
+    }
+    
+    .resources-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: var(--spacing-xl);
+    }
+    
+    .resources-group {
+        flex: 1;
+    }
+    
+    .resource-label {
+        flex: 0 0 100px;
+        font-size: 13px;
+    }
+    
+    #card-container {
+        max-width: 440px;
+        height: 500px;
+    }
+    
+    .card {
+        padding: calc(var(--spacing-xl) * 1.5);
+    }
+    
+    
+    .card-title {
+        font-size: 26px;
+    }
+    
+    .card-description {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+    
+    .choice-buttons {
+        gap: 80px;
+    }
+    
+    .choice-button {
+        width: 64px;
+        height: 64px;
+    }
+    
+    .choice-button svg {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .personal-stats {
+        font-size: 14px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    :root {
+        --header-height: 50px;
+        --footer-height: 60px;
+    }
+    
+    /* Body already has correct background from reset.css */
+    
+    #app {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    
+    .game-title {
+        font-size: 11px;
+    }
+    
+    .about-button {
+        font-size: 11px;
+    }
+    
+    #resources {
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .resources-container {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: var(--spacing-xl);
+        align-items: center;
+    }
+    
+    .resources-group {
+        flex: 1;
+        gap: 4px;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .resource {
+        flex: 0 0 48%;
+        margin-bottom: 4px;
+    }
+    
+    .resource-label {
+        flex: 0 0 80px;
+        font-size: 11px;
+    }
+    
+    .resource-bar-container {
+        height: 12px;
+    }
+    
+    #game-area {
+        padding: calc(var(--spacing-xl) * 2);
+        padding-top: 100px;
+    }
+    
+    #card-container {
+        max-width: 500px;
+        height: calc(100vh - var(--header-height) - var(--footer-height) - 180px);
+        max-height: 600px;
+    }
+    
+    .card {
+        padding: calc(var(--spacing-xl) * 2);
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+    
+    .card:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    }
+    
+    
+    .card-title {
+        font-size: 28px;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .card-description {
+        font-size: 19px;
+        line-height: 1.8;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .choice-buttons {
+        gap: 100px;
+        margin-top: calc(var(--spacing-xl) * 1.5);
+    }
+    
+    .choice-button {
+        width: 72px;
+        height: 72px;
+        border-width: 3px;
+    }
+    
+    .choice-button svg {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .consequence-text {
+        font-size: 18px;
+    }
+    
+    .personal-stats {
+        font-size: 16px;
+    }
+    
+    .modal-content {
+        max-width: 600px;
+        padding: calc(var(--spacing-xl) * 1.5);
+    }
+    
+    /* Enhanced hover effects on desktop */
+    .choice-button {
+        transition: all var(--transition-fast);
+    }
+    
+    .choice-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .resource:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+        padding: var(--spacing-xs);
+        margin: calc(var(--spacing-xs) * -1);
+        border-radius: 4px;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    
+    #card-container {
+        max-width: 520px;
+        height: 600px;
+    }
+    
+    .card-title {
+        font-size: 32px;
+    }
+    
+    .card-description {
+        font-size: 20px;
+    }
+}
+
+/* Hover-capable devices */
+@media (hover: hover) {
+    /* Enhanced hover states for devices with precise pointing */
+    .about-button:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 4px;
+    }
+    
+    .choice-button::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background-color: rgba(0, 0, 0, 0.05);
+        transition: transform var(--transition-normal);
+    }
+    
+    .choice-button:hover::after {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    
+    .choice-button {
+        border-width: 1.5px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    :root {
+        --header-height: 50px;
+        --footer-height: 50px;
+    }
+    
+    #resources {
+        padding: var(--spacing-md);
+    }
+    
+    .resources-container {
+        flex-direction: row;
+        gap: var(--spacing-md);
+    }
+    
+    .resources-group {
+        flex: 1;
+    }
+    
+    .resource {
+        font-size: 11px;
+    }
+    
+    .resource-label {
+        flex: 0 0 70px;
+    }
+    
+    #game-area {
+        padding: var(--spacing-md);
+        padding-top: 60px; /* Less space on landscape mobile */
+    }
+    
+    #card-container {
+        height: 320px;
+        margin: 0 auto;
+    }
+    
+    .card {
+        padding: var(--spacing-lg);
+    }
+    
+    .card-title {
+        font-size: 18px;
+    }
+    
+    .card-description {
+        font-size: 14px;
+    }
+}
+
+/* Desktop scaling support */
+#app.scaled {
+    position: relative;
+    transition: transform 0.3s ease-out;
+}
+
+/* When scaled, adjust some elements to prevent blur */
+#app.scaled .card,
+#app.scaled .choice-button,
+#app.scaled .resource-bar {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Print styles */
+@media print {
+    #app {
+        box-shadow: none;
+        width: 100%;
+    }
+    
+    .about-button,
+    .choice-buttons,
+    #footer {
+        display: none;
+    }
+}

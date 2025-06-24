@@ -1,0 +1,202 @@
+/* Resources Styles */
+#resources {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border-bottom: none;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.resources-container {
+    width: 100%;
+    max-width: var(--max-width-mobile);
+    padding: 24px var(--spacing-md);
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-md);
+}
+
+.resources-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Reduced from spacing-sm */
+    flex: 1; /* Each group takes equal width */
+}
+
+/* Individual Resource */
+.resource {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    position: relative;
+}
+
+.resource-label {
+    flex: 0 0 65px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+.resource-bar-container {
+    flex: 1;
+    height: 14px; /* Reduced from 16px */
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.resource-bar {
+    height: 100%;
+    width: 0%;
+    transition: all var(--transition-normal);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Resource Bar Colors */
+.resource-bar {
+    /* Color is set dynamically via JavaScript */
+    background-color: #4caf50; /* Default green */
+}
+
+/* Resource change animations */
+.resource.changing .resource-bar {
+    animation: resourcePulse 0.6s ease;
+}
+
+@keyframes resourcePulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+        transform: scaleY(1.1);
+    }
+}
+
+/* Resource change indicators */
+.resource-change {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 10;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.resource-change {
+    animation: changeFade 1.5s ease forwards;
+}
+
+@keyframes changeFade {
+    0% {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+    20% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50%);
+    }
+}
+
+/* Special states */
+.resource[data-resource="data"] .resource-label {
+    /* Note: In mockup this is DATA, but game uses KNOWLEDGE */
+}
+
+.resource[data-resource="alignment"] .resource-bar {
+    /* Hidden until late game */
+}
+
+.resource[data-resource="alignment"].hidden .resource-bar {
+    background-color: #999;
+    width: 100% !important;
+}
+
+/* Mystery text for alignment */
+.resource-mystery {
+    flex: 1;
+    text-align: left;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* Removed question marks from alignment label */
+
+/* Hover effects */
+.resource:hover .resource-bar-container {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Tooltip for resource formulas */
+.resource-tooltip {
+    position: absolute;
+    bottom: calc(100% + var(--spacing-sm));
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-primary);
+    color: var(--bg-card);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+    z-index: 10;
+}
+
+.resource-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: var(--text-primary);
+}
+
+.resource:hover .resource-tooltip {
+    opacity: 1;
+}
+
+/* Resource multiplier badges */
+.resource-multiplier {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: var(--color-amber);
+    color: var(--text-primary);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    z-index: 5;
+}

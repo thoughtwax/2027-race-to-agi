@@ -1,0 +1,99 @@
+/* Simplified Responsive Design - Mobile First */
+
+/* Base styles are mobile (up to 767px) */
+/* Everything in main.css is designed for mobile */
+
+/* Desktop breakpoint (768px and up) */
+@media (min-width: 768px) {
+    /* Keep app full width but center content */
+    .header-content,
+    .resources-container,
+    .footer-content {
+        max-width: 600px;
+    }
+    
+    /* Slightly larger spacing on desktop */
+    #header {
+        padding: 16px 24px;
+    }
+    
+    #resources {
+        padding: 20px 24px;
+    }
+    
+    /* Horizontal resource layout on desktop */
+    .resources-container {
+        flex-direction: row;
+        gap: 40px;
+    }
+    
+    .resources-group {
+        flex: 1;
+    }
+    
+    /* Larger card area */
+    #game-area {
+        padding: 40px 24px;
+    }
+    
+    #card-container {
+        max-width: 480px;
+        height: 420px;
+    }
+    
+    .card {
+        padding: 36px;
+    }
+    
+    /* Fixed font sizes for desktop */
+    
+    .card-title {
+        font-size: 28px;
+    }
+    
+    .card-description {
+        font-size: 18px;
+        line-height: 1.7;
+    }
+    
+    /* Larger spacing between buttons on desktop */
+    .choice-buttons {
+        gap: 120px;
+    }
+    
+    /* Shorter line width for response text on desktop */
+    .consequence-text {
+        max-width: 400px; /* Wider on desktop but still constrained */
+    }
+    
+    /* Footer adjustments */
+    #footer {
+        padding: 20px 24px;
+    }
+    
+    /* Modal sizing */
+    .modal-content {
+        max-width: 540px;
+        padding: 32px;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
+    
+    .modal-body {
+        font-size: 16px;
+    }
+    
+    /* Simple hover effects for desktop */
+    .choice-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .about-button:hover {
+        opacity: 0.8;
+    }
+}
+
+/* That's it! Just one breakpoint for simplicity */

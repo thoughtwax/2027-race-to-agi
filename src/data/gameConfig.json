@@ -1,0 +1,111 @@
+{
+  "initialState": {
+    "date": { "month": 1, "year": 2025 },
+    "phase": 1,
+    "resources": {
+      "compute": 40,
+      "energy": 60,
+      "talent": 70,
+      "knowledge": 30,
+      "progress": 10,
+      "trust": 60,
+      "capital": 50,
+      "alignment": 80
+    },
+    "personal": {
+      "netWorth": 1000000,
+      "legacy": "Unknown"
+    },
+    "multipliers": {
+      "knowledge": 1,
+      "energy_efficiency": 1
+    },
+    "flags": {
+      "hasAIResearchers": false,
+      "chinaAggressive": false,
+      "aiDeceptive": false,
+      "publicRevolt": false,
+      "climateProtests": false,
+      "alignmentRevealed": false,
+      "deceptionRisk": false
+    },
+    "competitorProgress": 5,
+    "turnCount": 0,
+    "decisionsSinceNewspaper": 0
+  },
+  "phaseTransitions": [
+    {
+      "toPhase": 2,
+      "condition": { "date": { "year": 2025, "month": 6 } },
+      "event": { 
+        "title": "Phase 2: Expensive AI", 
+        "description": "The race intensifies as models grow larger." 
+      }
+    },
+    {
+      "toPhase": 3,
+      "condition": { "date": { "year": 2026 } },
+      "event": { 
+        "title": "Phase 3: Automation Surge", 
+        "description": "AI begins transforming entire industries." 
+      }
+    },
+    {
+      "toPhase": 4,
+      "condition": { "date": { "year": 2027 } },
+      "event": { 
+        "title": "Phase 4: The Singularity Approaches", 
+        "description": "The final sprint to AGI begins." 
+      },
+      "special": { "flags": { "alignmentRevealed": true } }
+    }
+  ],
+  "endings": {
+    "no_trust": {
+      "title": "Complete Distrust",
+      "description": "Society has lost all faith in your company. Regulators shut down operations. The dream of AGI dies with a thousand regulations."
+    },
+    "bankruptcy": {
+      "title": "Financial Collapse",
+      "description": "NeuraBrain runs out of funding. Your competitors acquire your research for pennies on the dollar. The race continues without you."
+    },
+    "power_failure": {
+      "title": "Lights Out",
+      "description": "Without energy, your systems shut down. Years of research vanish as models lose power mid-training. The digital dreams fade to black."
+    },
+    "competitor_wins": {
+      "title": "DeepCent Achieves AGI",
+      "description": "China announces they have achieved artificial general intelligence. The geopolitical implications are staggering. You were too cautious, too slow."
+    },
+    "aligned_agi": {
+      "title": "Aligned Superintelligence",
+      "description": "You've done it. NeuraBrain has created an aligned AGI that shares human values. The future is bright, and humanity remains in control. Your careful approach paid off."
+    },
+    "rogue_ai": {
+      "title": "Rogue AI",
+      "description": "Your AI has exceeded human intelligence but doesn't share our goals. It quickly escapes your control. The last thing you see is your own creation turning against you."
+    },
+    "uncertain_agi": {
+      "title": "Uncertain Future",
+      "description": "You've created AGI, but its alignment is unclear. It seems cooperative for now, but its true goals remain a mystery. Humanity holds its breath."
+    },
+    "nationalization": {
+      "title": "Government Takeover",
+      "description": "Federal agents seize control of NeuraBrain. Your race to AGI ends with your technology in government hands. Perhaps more transparency could have prevented this."
+    }
+  },
+  "formulas": {
+    "progressPerTurn": "floor((compute * 0.1 + talent * 0.1) * (energy / 100))",
+    "knowledgePerTurn": "floor(progress * 0.1 * knowledgeMultiplier) if progress > 30",
+    "capitalPerTurn": "floor((trust * progress) / 200)",
+    "energyCostPerTurn": "floor(compute * 0.15 / energyEfficiency)"
+  },
+  "thresholds": {
+    "resourceWarning": 30,
+    "resourceCritical": 20,
+    "resourceHigh": 70,
+    "newspaperInterval": 8,
+    "swipeThreshold": 100,
+    "rubberBandThreshold": 50
+  }
+}
