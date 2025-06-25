@@ -28,6 +28,10 @@ const Game = {
         // Set initialized flag
         this.isInitialized = true;
         
+        // Show the app
+        document.getElementById('app').style.opacity = '1';
+        document.getElementById('app').style.transition = 'opacity 0.3s ease';
+        
         // Start first turn
         this.nextTurn();
         
@@ -37,6 +41,13 @@ const Game = {
     
     // Progress to next turn
     nextTurn() {
+        // Show tutorial card on first turn
+        if (GameState.current.turnCount === 0 && Cards.cardsData.tutorial) {
+            Cards.currentCard = Cards.cardsData.tutorial;
+            Cards.displayCard(Cards.cardsData.tutorial);
+            return;
+        }
+        
         // Check for crisis event first
         const crisis = Crisis.checkForCrisis();
         

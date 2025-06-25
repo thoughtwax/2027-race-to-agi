@@ -3,13 +3,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     console.log('RACE TO AGI - Initializing...');
     
     try {
-        // Initialize game directly (no save system)
-        await Game.init();
+        // Initialize modal handlers early so they work from splash screen
+        UI.initModal();
         
-        console.log('Game initialized successfully');
+        // Show splash screen first
+        Splash.show();
         
-        // Add keyboard shortcuts
+        // Add keyboard shortcuts that will be active after game starts
         document.addEventListener('keydown', (e) => {
+            // Handle Escape key for modal even during splash
+            if (e.key === 'Escape') {
+                UI.hideModal();
+                return;
+            }
+            
+            // Only handle game shortcuts if splash is not visible
+            if (document.getElementById('splash-screen')) return;
             if (DragHandler.dragging) return;
             
             switch(e.key) {
@@ -22,9 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 case 'd':
                 case 'D':
                     UI.animateChoice('right');
-                    break;
-                case 'Escape':
-                    UI.hideModal();
                     break;
             }
         });

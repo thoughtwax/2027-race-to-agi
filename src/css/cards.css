@@ -52,6 +52,19 @@
     transition: none !important;
 }
 
+/* Tutorial card special animation */
+.card.tutorial-hint {
+    animation: tutorialSwipeHint 2s ease-in-out 0.3s;
+}
+
+.choice-button.tutorial-glow-left {
+    animation: tutorialButtonGlowLeft 2s ease-in-out 0.3s;
+}
+
+.choice-button.tutorial-glow-right {
+    animation: tutorialButtonGlowRight 2s ease-in-out 0.3s;
+}
+
 /* Card Content */
 .card-header {
     font-family: var(--font-mono);

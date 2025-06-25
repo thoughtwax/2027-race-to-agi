@@ -1,22 +1,22 @@
 {
   "tutorial": {
     "id": "tutorial",
-    "title": "Skip the Tutorial?",
-    "description": "You're the CEO racing to AGI. Resources combine to create progress. Without alignment, speed kills. Skip learning and dive in?",
+    "title": "Ready to Race to AGI?",
+    "description": "You're the CEO of OpenBrain, a leading AI lab racing to achieve AGI. Your goal is to drive PROGRESS while keeping everything else in balance. Ready to make decisions that will shape the future of humanity?",
     "header": "TUTORIAL",
-    "leftChoice": "Skip tutorial",
-    "rightChoice": "Learn basics",
-    "leftEffects": {},
-    "rightEffects": {
-      "knowledge": 5
+    "leftChoice": "I'm not ready",
+    "rightChoice": "I'm ready",
+    "leftEffects": {
+      "talent": -100
     },
+    "rightEffects": {},
     "leftEvent": {
-      "title": "Diving In",
-      "description": "Sometimes the best way to learn is by doing."
+      "title": "You quit",
+      "description": "Not everybody has what it takes."
     },
     "rightEvent": {
-      "title": "Knowledge Gained",
-      "description": "Understanding the system gives you an edge. +5 Knowledge to start."
+      "title": "Let's begin",
+      "description": "With great compute comes great responsibility. Choose wisely."
     }
   },
   "phase1": [
@@ -49,7 +49,7 @@
     {
       "id": "datacenter_investment",
       "title": "Build Power-Hungry Megacluster?",
-      "description": "Next-gen models need massive compute. Build sustainably or construct a power-hungry megacluster for maximum speed?",
+      "description": "Next-gen models need massive compute. Construct a power-hungry megacluster for maximum speed?",
       "header": "INFRASTRUCTURE",
       "leftChoice": "Efficient growth",
       "rightChoice": "Massive expansion",
@@ -71,7 +71,7 @@
       },
       "leftEvent": {
         "title": "Sustainable Growth",
-        "description": "You optimize efficiency while expanding capacity."
+        "description": "You agree to sustainably expand capacity."
       },
       "rightEvent": {
         "title": "Megacluster Online",

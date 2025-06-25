@@ -3,7 +3,8 @@ const UI = {
     // Initialize UI
     init() {
         this.initButtons();
-        this.initModal();
+        // Modal is now initialized early in main.js
+        // this.initModal();
         this.updateDate();
         this.updatePersonalStats();
         Resources.initTooltips();
@@ -226,6 +227,10 @@ const UI = {
     // Display game over content
     showGameOverContent(ending) {
         const endingsData = {
+            quit: {
+                title: "You Quit",
+                description: "Not everybody has what it takes to lead the race to AGI. You step down before even trying, leaving the future in someone else's hands."
+            },
             no_trust: {
                 title: "Complete Distrust",
                 description: "Society has lost all faith in your company. Regulators shut down operations. The dream of AGI dies with a thousand regulations."

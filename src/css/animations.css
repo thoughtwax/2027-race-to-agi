@@ -2,6 +2,45 @@
 
 /* Card Exit Animations - handled by drag.css now */
 
+/* Tutorial card swipe hint animation */
+@keyframes tutorialSwipeHint {
+    0% {
+        transform: translateX(0) rotate(0deg);
+    }
+    30% {
+        transform: translateX(-80px) rotate(-8deg);
+    }
+    70% {
+        transform: translateX(80px) rotate(8deg);
+    }
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}
+
+/* Button glow animations for tutorial */
+@keyframes tutorialButtonGlowLeft {
+    0%, 40%, 100% {
+        box-shadow: 0 0 0 rgba(220, 38, 38, 0);
+        border-color: #d1d5db;
+    }
+    30% {
+        box-shadow: 0 0 20px rgba(220, 38, 38, 0.6);
+        border-color: #dc2626;
+    }
+}
+
+@keyframes tutorialButtonGlowRight {
+    0%, 60%, 100% {
+        box-shadow: 0 0 0 rgba(22, 163, 74, 0);
+        border-color: #d1d5db;
+    }
+    70% {
+        box-shadow: 0 0 20px rgba(22, 163, 74, 0.6);
+        border-color: #16a34a;
+    }
+}
+
 /* Rubber Band Effect */
 @keyframes rubberBand {
     0% {

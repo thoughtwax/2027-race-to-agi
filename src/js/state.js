@@ -138,6 +138,7 @@ const GameState = {
         const r = this.current.resources;
         
         // Loss conditions
+        if (r.talent <= 0) return 'quit';
         if (r.trust <= 0) return 'no_trust';
         if (r.capital <= 0) return 'bankruptcy';
         if (r.energy <= 0) return 'power_failure';

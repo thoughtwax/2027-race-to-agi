@@ -8,23 +8,19 @@ const Splash = {
     
     const splashHTML = `
         <div id="splash-screen">
+            <a href="#" class="splash-about" id="splash-about-btn">ABOUT</a>
+            
             <div class="splash-content">
-                <div class="splash-logo">
-                    <h1>AI 2027</h1>
-                    <div class="splash-subtitle">THE RACE TO AGI</div>
+                <div class="splash-title">
+                    <h1 class="splash-year">2027:</h1>
+                    <h1 class="splash-subtitle">RACE TO AGI</h1>
                 </div>
                 
-                <div class="splash-text">
-                    <p>You are the CEO of a leading AI company.</p>
-                    <p>The world watches as you race toward AGI.</p>
-                    <p>Every decision shapes the future of humanity.</p>
-                </div>
-                
-                <button class="splash-start-button">BEGIN</button>
-                
-                <div class="splash-footer">
-                    <p>Inspired by Situational Awareness and the race to AGI</p>
-                </div>
+                <button class="splash-play-button" id="splash-play-btn">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 28V12L28 20L14 28Z" fill="white"/>
+                    </svg>
+                </button>
             </div>
         </div>
     `;
@@ -32,20 +28,28 @@ const Splash = {
     document.body.insertAdjacentHTML('beforeend', splashHTML);
     
     const splash = document.getElementById('splash-screen');
-    const startButton = splash.querySelector('.splash-start-button');
+    const playButton = document.getElementById('splash-play-btn');
+    const aboutButton = document.getElementById('splash-about-btn');
     
     // Fade in
     setTimeout(() => {
         splash.classList.add('visible');
     }, 100);
     
+    // About button
+    aboutButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Show about modal directly without starting game
+        UI.showModal();
+    });
+    
     // Start game on button click
-    startButton.addEventListener('click', () => {
+    playButton.addEventListener('click', () => {
         splash.classList.add('fade-out');
         setTimeout(() => {
             splash.remove();
             Game.init();
-        }, 800);
+        }, 400);
     });
     
     // Also start on any key press after a delay
@@ -53,7 +57,7 @@ const Splash = {
         const handleKeyPress = (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 document.removeEventListener('keydown', handleKeyPress);
-                startButton.click();
+                playButton.click();
             }
         };
         document.addEventListener('keydown', handleKeyPress);

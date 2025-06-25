@@ -163,6 +163,20 @@ const Cards = {
                     }
                 }, 100); // Additional delay for buttons
                 
+                // Add tutorial animation for first card
+                if (card.id === 'tutorial' && GameState.current.turnCount === 0) {
+                    cardElement.classList.add('tutorial-hint');
+                    document.getElementById('choice-left').classList.add('tutorial-glow-left');
+                    document.getElementById('choice-right').classList.add('tutorial-glow-right');
+                    
+                    // Remove tutorial classes after animation
+                    setTimeout(() => {
+                        cardElement.classList.remove('tutorial-hint');
+                        document.getElementById('choice-left').classList.remove('tutorial-glow-left');
+                        document.getElementById('choice-right').classList.remove('tutorial-glow-right');
+                    }, 2300); // Animation duration + delay
+                }
+                
                 // Re-attach drag handler to the card
                 if (typeof DragHandler !== 'undefined' && DragHandler.attachToCard) {
                     DragHandler.attachToCard();
