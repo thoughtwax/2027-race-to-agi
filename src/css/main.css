@@ -37,6 +37,7 @@
 /* App Container */
 #app {
     height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -45,6 +46,7 @@
     overflow-x: hidden; /* Hide horizontal scroll but allow cards to animate */
     overflow-y: hidden;
     min-width: 375px; /* Minimum width for modern mobile devices */
+    padding-bottom: env(safe-area-inset-bottom); /* Safe area for devices with home indicator */
 }
 
 /* Header */
@@ -117,7 +119,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 0; /* Remove gap, we'll position buttons explicitly */
     width: 100%;
     max-width: 480px;
     position: relative;
@@ -132,6 +134,7 @@
     justify-content: center;
     background-color: transparent;
     border-top: none;
+    padding-bottom: env(safe-area-inset-bottom, 20px); /* Account for Safari URL bar */
 }
 
 .footer-content {

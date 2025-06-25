@@ -3,17 +3,13 @@
     position: relative;
     width: 100%;
     max-width: 360px;
-    height: 460px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+    margin: 120px auto 0; /* Moved down another 20px */
     overflow: visible;
     flex-shrink: 0; /* Prevent card from shrinking */
 }
 
 .card {
-    position: absolute;
+    position: relative; /* Changed from absolute to keep in document flow */
     width: 100%;
     background-color: var(--bg-card);
     border-radius: 8px;
@@ -91,7 +87,7 @@
     justify-content: center;
     gap: 60px;
     flex-shrink: 0;
-    margin-top: 5px; /* Nudged down by 80px from previous position */
+    margin-top: 40px; /* Reduced to 40px below card */
 }
 
 .choice-button {
