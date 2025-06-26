@@ -2,8 +2,8 @@
   "tutorial": {
     "id": "tutorial",
     "title": "Ready to Race to AGI?",
-    "description": "You're the CEO of OpenBrain, a leading AI lab racing to achieve AGI. Your goal is to drive PROGRESS while keeping everything else in balance. Ready to make decisions that will shape the future of humanity?",
-    "header": "TUTORIAL",
+    "description": "**You are the CEO of OpenBrain**, a leading lab racing to achieve Artificial General Intelligence. Your goal is to drive **PROGRESS** while avoiding catastrophe. \n\n Ready to make decisions that will shape the future of humanity?",
+    "header": "",
     "leftChoice": "I'm not ready",
     "rightChoice": "I'm ready",
     "leftEffects": {

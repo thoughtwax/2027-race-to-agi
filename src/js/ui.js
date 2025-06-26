@@ -288,10 +288,27 @@ const UI = {
         
         // Create game over screen in the main game area
         const gameArea = document.getElementById('game-area');
+        
+        // Reset game-area styles to prevent flex centering issues
+        gameArea.style.display = 'block';
+        gameArea.style.justifyContent = 'initial';
+        gameArea.style.alignItems = 'initial';
+        
         gameArea.innerHTML = `
             <div class="game-over-screen">
-                <h1 class="game-over-label">GAME OVER</h1>
-                <div class="game-over-layout">
+                <div class="game-over-container">
+                    <h1 class="game-over-label">GAME OVER</h1>
+                    
+                    <div class="ending-card" data-ending="${ending}">
+                        <div class="card-label">YOUR RESULT</div>
+                        <h2 class="ending-title">${endingData.title}</h2>
+                        <p class="ending-description">${endingData.description}</p>
+                    </div>
+                    
+                    <div class="game-over-story">
+                        <button class="restart-button" onclick="Game.restart()">TRY AGAIN</button>
+                    </div>
+                    
                     <div class="game-over-stats">
                         <div class="stat-item">
                             <span class="stat-label">NET WORTH:</span>
@@ -319,17 +336,13 @@ const UI = {
                         ${bestScore && !isNewBest ? `<div class="best-score">BEST: $${(bestScore.netWorth / 1000000).toFixed(1)}M</div>` : ''}
                     </div>
                     
-                    <div class="game-over-story">
-                        <h2 class="ending-title">${endingData.title}</h2>
-                        <p class="ending-description">${endingData.description}</p>
-                        
-                        <button class="restart-button" onclick="Game.restart()">TRY AGAIN</button>
-                        
-                        <div id="share-section"></div>
-                    </div>
+                    <div class="share-section" id="share-section"></div>
                 </div>
             </div>
         `;
+        
+        // Remove the scroll manipulation - let the natural layout work
+        // The CSS padding should handle the spacing
         
         // Add share functionality
         const shareSection = document.getElementById('share-section');

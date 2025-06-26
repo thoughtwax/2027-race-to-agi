@@ -319,30 +319,14 @@
 }
 
 /* Special Effects for Different Endings */
-@keyframes alignedAGI {
-    0% {
-        filter: hue-rotate(0deg) brightness(1);
-    }
-    100% {
-        filter: hue-rotate(360deg) brightness(1.2);
-    }
-}
-
-@keyframes rogueAI {
-    0%, 100% {
-        filter: invert(0) hue-rotate(0deg);
-    }
-    50% {
-        filter: invert(1) hue-rotate(180deg);
-    }
-}
+/* Removed flashing animations for endings */
 
 .ending-aligned {
-    animation: alignedAGI 3s linear infinite;
+    /* No animation - removed distracting flashing lights */
 }
 
 .ending-rogue {
-    animation: rogueAI 0.5s ease-in-out infinite;
+    /* No animation - removed distracting flashing lights */
 }
 
 /* Accessibility: Reduced Motion */

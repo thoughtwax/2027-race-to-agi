@@ -1,67 +1,139 @@
 /* Game Over Screen Styles */
 .game-over-screen {
-    min-height: 100vh;
-    padding: calc(var(--spacing-xl) * 3) var(--spacing-xl) var(--spacing-xl);
-    background-color: #722f37; /* Rich wine red */
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    background-color: #722f37; /* Rich wine red */
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
+    padding: 80px 20px;
+}
+
+.game-over-container {
+    width: 500px;
+    margin: 0 auto;
 }
 
 .game-over-label {
     font-family: var(--font-mono);
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 40px;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.5em;
     text-align: center;
-    margin-bottom: calc(var(--spacing-xl) * 4);
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
+    margin: 0 0 60px 0;
+    display: block;
 }
 
-.game-over-layout {
-    display: flex;
-    gap: calc(var(--spacing-xl) * 4);
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-    flex: 1;
+.game-over-story {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ending-card {
+    background-color: var(--bg-card);
+    border-radius: 8px;
+    padding: var(--spacing-xl) var(--spacing-xl) 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+    margin-bottom: 40px;
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ending-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+}
+
+/* Ending-specific background images */
+.ending-card[data-ending="aligned_agi"]::after {
+    background-image: url('/assets/images/aligned.png');
+}
+
+.ending-card[data-ending="bankruptcy"]::after {
+    background-image: url('/assets/images/bankruptcy.png');
+}
+
+.ending-card[data-ending="competitor_wins"]::after {
+    background-image: url('/assets/images/competitor.png');
+}
+
+.ending-card[data-ending="power_failure"]::after {
+    background-image: url('/assets/images/power.png');
+}
+
+.ending-card[data-ending="rogue_ai"]::after {
+    background-image: url('/assets/images/rogue.png');
+}
+
+.ending-card[data-ending="no_trust"]::after {
+    background-image: url('/assets/images/trust.png');
+}
+
+.ending-card[data-ending="uncertain_agi"]::after {
+    background-image: url('/assets/images/uncertain.png');
+}
+
+.ending-card[data-ending="quit"]::after {
+    background-image: url('/assets/images/quit.png');
+}
+
+.ending-card[data-ending="nationalization"]::after {
+    background-image: url('/assets/images/nationalization.png');
 }
 
 .game-over-stats {
-    flex: 0 0 250px;
+    width: 300px;
+    margin: 0 auto var(--spacing-xl);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
 }
 
-.game-over-story {
-    flex: 1;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
+.card-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
 }
 
 .ending-title {
     font-family: var(--font-sans);
-    font-size: 36px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: var(--spacing-xl);
-    color: #ffffff;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
 }
 
 .ending-description {
     font-family: var(--font-sans);
-    font-size: 18px;
-    line-height: 1.6;
-    margin-bottom: calc(var(--spacing-xl) * 3);
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text-primary);
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 220px; /* Space for the image */
 }
 
 .stat-item {
@@ -113,8 +185,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: all var(--transition-fast);
-    margin-bottom: calc(var(--spacing-xl) * 3);
-    align-self: flex-start;
+    margin-bottom: var(--spacing-xl);
 }
 
 .restart-button:hover {
@@ -122,23 +193,19 @@
     transform: translateY(-2px);
 }
 
+/* Share links section */
+.share-section {
+    width: 100%;
+    text-align: center;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .game-over-layout {
-        flex-direction: column;
-        gap: calc(var(--spacing-xl) * 2);
-    }
-    
-    .game-over-stats {
-        flex: none;
-        width: 100%;
-    }
-    
     .ending-title {
         font-size: 28px;
     }
     
     .ending-description {
-        font-size: 16px;
+        font-size: 15px;
     }
 }

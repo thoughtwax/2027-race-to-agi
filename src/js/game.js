@@ -244,7 +244,8 @@ const Game = {
             bankruptcy: 'sellout',
             no_trust: 'destroyer',
             competitor_wins: 'cautious',
-            uncertain_agi: 'balanced'
+            uncertain_agi: 'balanced',
+            superintelligence: 'singular_legend'
         };
         
         if (legacyMap[ending]) {

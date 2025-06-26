@@ -139,12 +139,16 @@
 }
 
 /* Hover States */
-.choice-button:hover {
-    border-color: var(--text-secondary);
+.choice-button.choice-left:hover {
+    border-color: var(--color-red);
 }
 
 .choice-button.choice-left:hover svg {
     color: var(--color-red);
+}
+
+.choice-button.choice-right:hover {
+    border-color: var(--color-green);
 }
 
 .choice-button.choice-right:hover svg {

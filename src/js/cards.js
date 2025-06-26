@@ -137,7 +137,29 @@ const Cards = {
         descriptions.forEach(desc => {
             const p = document.createElement('p');
             p.className = 'card-description';
-            p.textContent = desc;
+            
+            // Split by newline characters and create line breaks
+            const lines = desc.split('\n');
+            lines.forEach((line, index) => {
+                if (index > 0) {
+                    p.appendChild(document.createElement('br'));
+                }
+                
+                // Process bold text marked with **text**
+                const parts = line.split(/\*\*(.*?)\*\*/g);
+                parts.forEach((part, partIndex) => {
+                    if (partIndex % 2 === 1) {
+                        // Odd indices are the bold parts
+                        const bold = document.createElement('strong');
+                        bold.textContent = part;
+                        p.appendChild(bold);
+                    } else if (part) {
+                        // Even indices are regular text
+                        p.appendChild(document.createTextNode(part));
+                    }
+                });
+            });
+            
             cardElement.appendChild(p);
         });
         
@@ -203,6 +225,13 @@ const Cards = {
         // Show consequence text
         if (event) {
             UI.showConsequence(event.description);
+        }
+        
+        // Special handling for tutorial card's quit option
+        if (this.currentCard.id === 'tutorial' && choice === 'left') {
+            // Don't apply the talent effect or progress turn - just end the game
+            setTimeout(() => Game.endGame('quit'), 1500);
+            return;
         }
         
         // Apply resource effects
