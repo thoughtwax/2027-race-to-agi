@@ -46,7 +46,7 @@ ai-2027-game/
 - **Sophisticated drag physics** with rubber band effects
 - **4 input + 4 output resources** with feedback loops
 - **Personal stakes** tracking (Net Worth & Legacy)
-- **Save system** using localStorage
+- **Session-based gameplay** (progress resets when the page is closed)
 - **40+ decision cards** across 4 phases
 - **Multiple endings** based on your choices
 
