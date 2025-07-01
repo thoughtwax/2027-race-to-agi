@@ -26,3 +26,8 @@ build/
 # Design files
 mockup.png
 mockups/
+
+# Project documentation
+TODO.md
+CLAUDE.md
+PRD.md
