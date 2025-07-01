@@ -8,19 +8,27 @@ const Splash = {
     
     const splashHTML = `
         <div id="splash-screen">
+            <video class="splash-video" autoplay loop muted playsinline>
+                <source src="assets/images/splash.mp4" type="video/mp4">
+            </video>
+            
             <a href="#" class="splash-about" id="splash-about-btn">ABOUT</a>
             
             <div class="splash-content">
-                <div class="splash-title">
-                    <h1 class="splash-year">2027:</h1>
-                    <h1 class="splash-subtitle">RACE TO AGI</h1>
+                <div class="splash-title-wrapper">
+                    <div class="splash-title">
+                        <h1 class="splash-year">2027<span class="splash-colon">:</span></h1>
+                        <h1 class="splash-subtitle">RACE TO AGI</h1>
+                    </div>
                 </div>
                 
                 <button class="splash-play-button" id="splash-play-btn">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 28V12L28 20L14 28Z" fill="white"/>
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 48V16L48 32L16 48Z" fill="white"/>
                     </svg>
                 </button>
+                
+                <p class="splash-credit">A GAME BY EMMET CONNOLLY</p>
             </div>
         </div>
     `;

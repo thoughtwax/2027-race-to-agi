@@ -23,7 +23,7 @@
     {
       "id": "early_publish",
       "title": "Keep Research Secret?",
-      "description": "Your team discovered game-changing neural architecture. Publishing helps everyone—including DeepCent. Keep this breakthrough secret?",
+      "description": "Your team discovered game-changing neural architecture. Publishing helps everyone—including rivals DeepCent. Keep this breakthrough secret?",
       "header": "RESEARCH DISCOVERY",
       "leftChoice": "Keep secret",
       "rightChoice": "Publish openly",
@@ -81,7 +81,7 @@
     {
       "id": "talent_war",
       "title": "Let Researchers Leave?",
-      "description": "DeepCent offers triple salaries to poach your researchers. Let them go or empty your war chest to keep them?",
+      "description": "LlamaFace offers triple salaries to poach your researchers. Let them go or empty your war chest to keep them?",
       "header": "TALENT RAID",
       "leftChoice": "Let them go",
       "rightChoice": "Triple salaries",

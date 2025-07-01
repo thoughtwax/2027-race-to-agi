@@ -55,7 +55,7 @@ const Newspaper = {
         // Crisis headlines
         if (r.trust < 20) {
             headlines.push(
-                { title: "NEURABRAIN UNDER SIEGE", subtitle: "Protesters demand immediate shutdown" },
+                { title: "OPENBRAIN UNDER SIEGE", subtitle: "Protesters demand immediate shutdown" },
                 { title: "AI LAB FACES CRIMINAL CHARGES", subtitle: "Prosecutors cite 'reckless endangerment of humanity'" },
                 { title: "TRUST IN AI HITS ROCK BOTTOM", subtitle: "Poll shows 90% oppose continued development" }
             );
@@ -71,7 +71,7 @@ const Newspaper = {
         
         if (r.progress > 80) {
             headlines.push(
-                { title: "AI SURPASSES HUMAN SCIENTISTS", subtitle: "NeuraBrain system designs its own successor" },
+                { title: "AI SURPASSES HUMAN SCIENTISTS", subtitle: "OpenBrain system designs its own successor" },
                 { title: "THE INTELLIGENCE EXPLOSION BEGINS", subtitle: "Recursive self-improvement detected" },
                 { title: "POINT OF NO RETURN PASSED", subtitle: "AGI development now unstoppable, experts warn" }
             );
@@ -80,7 +80,7 @@ const Newspaper = {
         if (r.alignment < 30 && state.flags.alignmentRevealed) {
             headlines.push(
                 { title: "AI ALIGNMENT FAILURE CONFIRMED", subtitle: "Leaked documents reveal loss of control" },
-                { title: "ROGUE AI FEARS MOUNT", subtitle: "Safety researchers abandon NeuraBrain en masse" },
+                { title: "ROGUE AI FEARS MOUNT", subtitle: "Safety researchers abandon OpenBrain en masse" },
                 { title: "HUMANITY'S GREATEST MISTAKE?", subtitle: "Critics say misaligned AGI threatens extinction" }
             );
         }
@@ -267,7 +267,7 @@ const Newspaper = {
         const change = Math.round((Math.random() - 0.5) * 20);
         
         return {
-            symbol: "NRBR",
+            symbol: "OPBR",
             price: stockPrice,
             change: change,
             changePercent: (change / stockPrice * 100).toFixed(1),
@@ -281,7 +281,7 @@ const Newspaper = {
             "BREAKING: EU considers emergency AI moratorium",
             "FLASH: Mysterious power outage at DeepCent facility",
             "UPDATE: UN Security Council to discuss AI threat",
-            "ALERT: Anonymous claims to have NeuraBrain source code",
+            "ALERT: Anonymous claims to have OpenBrain source code",
             "NEWS: Major tech company announces AGI timeline",
             "BREAKING: Scientists detect anomalous network activity",
             "URGENT: Military put on high alert over AI concerns"

@@ -85,11 +85,9 @@ const DragHandler = {
             try {
                 this.cardElement.setPointerCapture(e.pointerId);
             } catch (err) {
-                console.log('Pointer capture not supported');
             }
         }
         
-        console.log('Dragging started', this.dragging);
     },
     
     handlePointerMove(e) {

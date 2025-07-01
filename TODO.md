@@ -58,10 +58,6 @@
   - [ ] Smooth fade transition between cards
 
 ### Medium Priority
-- [ ] Create full-page About modal
-  - [ ] Game description and satirical goals
-  - [ ] Credits and attribution
-  - [ ] Link to AI2027 paper inspiration
 
 - [ ] Desktop scaling
   - [ ] Detect screen size and scale appropriately

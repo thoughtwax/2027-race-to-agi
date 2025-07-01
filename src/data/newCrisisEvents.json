@@ -284,7 +284,7 @@
     {
       "condition": { "capital": { "lt": 20 } },
       "headlines": [
-        "NEURABRAIN ON BRINK OF BANKRUPTCY",
+        "OPENBRAIN ON BRINK OF BANKRUPTCY",
         "VENTURE FUNDING DRIES UP FOR AI",
         "FINANCIAL CRISIS HITS TECH SECTOR"
       ]
@@ -326,7 +326,7 @@
     {
       "condition": { "talent": { "gt": 90 } },
       "headlines": [
-        "GLOBAL BRAIN DRAIN TO NEURABRAIN",
+        "GLOBAL BRAIN DRAIN TO OPENBRAIN",
         "EVERY TOP RESEARCHER JOINS AGI RACE",
         "UNIVERSITIES EMPTIED AS TALENT FLOCKS TO AI"
       ]

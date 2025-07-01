@@ -1,6 +1,5 @@
 // Main Entry Point
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('RACE TO AGI - Initializing...');
     
     try {
         // Initialize modal handlers early so they work from splash screen
@@ -70,7 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             };
             
-            console.log('Debug mode enabled. Access debug commands via window.debug');
         }
         
     } catch (error) {

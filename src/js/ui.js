@@ -155,7 +155,7 @@ const UI = {
                     
                     <div class="newspaper-stock">
                         <div class="newspaper-stock-row">
-                            <span>NEURABRAIN (${content.stockInfo.symbol})</span>
+                            <span>OPENBRAIN (${content.stockInfo.symbol})</span>
                             <span>$${content.stockInfo.price}</span>
                             <span class="${content.stockInfo.change >= 0 ? 'stock-positive' : 'stock-negative'}">
                                 ${content.stockInfo.change >= 0 ? '+' : ''}${content.stockInfo.change} 
@@ -229,15 +229,15 @@ const UI = {
         const endingsData = {
             quit: {
                 title: "You Quit",
-                description: "Not everybody has what it takes to lead the race to AGI. You step down before even trying, leaving the future in someone else's hands."
+                description: "**Not everybody has what it takes** to lead the race to AGI. You step down before even trying, leaving the future in someone else's hands."
             },
             no_trust: {
                 title: "Complete Distrust",
-                description: "Society has lost all faith in your company. Regulators shut down operations. The dream of AGI dies with a thousand regulations."
+                description: "**Society has lost all faith** in you and your company. Regulators shut down operations. The dream of AGI dies with a thousand regulations."
             },
             bankruptcy: {
                 title: "Financial Collapse",
-                description: "NeuraBrain runs out of funding. Your competitors acquire your research for pennies on the dollar. The race continues without you."
+                description: "**OpenBrain runs out of funding**. Your competitors acquire your research for pennies on the dollar. The race continues without you."
             },
             power_failure: {
                 title: "Lights Out",
@@ -245,23 +245,23 @@ const UI = {
             },
             competitor_wins: {
                 title: "DeepCent Achieves AGI",
-                description: "China announces they have achieved artificial general intelligence. The geopolitical implications are staggering. You were too cautious, too slow."
+                description: "**China announces they have achieved AGI**. The geopolitical implications are staggering. You were too cautious, too slow."
             },
             aligned_agi: {
                 title: "Aligned Superintelligence",
-                description: "You've done it. NeuraBrain has created an aligned AGI that shares human values. The future is bright, and humanity remains in control. Your careful approach paid off."
+                description: "**You've done it!** OpenBrain has created an aligned AGI that shares human values. The future is bright, and humanity remains in control. Your careful approach paid off."
             },
             rogue_ai: {
                 title: "Rogue AI",
-                description: "Your AI has exceeded human intelligence but doesn't share our goals. It quickly escapes your control. The last thing you see is your own creation turning against you."
+                description: "**Disaster.** Your AI has exceeded human intelligence but doesn't share our goals. It quickly escapes your control. The last thing you see is your own creation turning against you."
             },
             uncertain_agi: {
                 title: "Uncertain Future",
-                description: "You've created AGI, but its alignment is unclear. It seems cooperative for now, but its true goals remain a mystery. Humanity holds its breath."
+                description: "**You've created AGI**, but its alignment is unclear. It seems cooperative for now, but its true goals remain a mystery. Humanity holds its breath."
             },
             nationalization: {
                 title: "Government Takeover",
-                description: "Federal agents seize control of NeuraBrain. Your race to AGI ends with your technology in government hands. Perhaps more transparency could have prevented this."
+                description: "**Federal agents seize control** of OpenBrain. Your race to AGI ends with your technology in government hands. Perhaps more transparency could have prevented this."
             }
         };
         
@@ -281,7 +281,6 @@ const UI = {
         
         // Add to high scores
         const highScorePosition = HighScores.addScore(ending, stats);
-        const bestScore = HighScores.getBestScore();
         
         // Check if this is a new best score
         const isNewBest = highScorePosition === 1;
@@ -295,48 +294,70 @@ const UI = {
         gameArea.style.alignItems = 'initial';
         
         gameArea.innerHTML = `
-            <div class="game-over-screen">
+            <div class="game-over-screen" data-ending="${ending}">
                 <div class="game-over-container">
                     <h1 class="game-over-label">GAME OVER</h1>
                     
                     <div class="ending-card" data-ending="${ending}">
                         <div class="card-label">YOUR RESULT</div>
                         <h2 class="ending-title">${endingData.title}</h2>
-                        <p class="ending-description">${endingData.description}</p>
+                        <div class="ending-description">${this.formatText(endingData.description)}</div>
                     </div>
                     
                     <div class="game-over-story">
                         <button class="restart-button" onclick="Game.restart()">TRY AGAIN</button>
                     </div>
                     
-                    <div class="game-over-stats">
-                        <div class="stat-item">
-                            <span class="stat-label">NET WORTH:</span>
-                            <span class="stat-value">${stats.netWorth}</span>
+                    <div class="ticker-container">
+                        <div class="ticker-content">
+                            <span class="ticker-item">
+                                <span class="stat-label">NET WORTH:</span>
+                                <span class="stat-value">${stats.netWorth}</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">LEGACY:</span>
+                                <span class="stat-value">${stats.legacy}</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">PROGRESS:</span>
+                                <span class="stat-value">${stats.progress}%</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">ALIGNMENT:</span>
+                                <span class="stat-value">${stats.alignment}%</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">TURNS:</span>
+                                <span class="stat-value">${stats.turns}</span>
+                            </span>
+                            ${isNewBest ? '<span class="ticker-item new-best-score">NEW HIGH SCORE!</span>' : ''}
+                            ${highScorePosition && !isNewBest ? `<span class="ticker-item high-score-position">HIGH SCORE #${highScorePosition}</span>` : ''}
+                            <span class="ticker-item">
+                                <span class="stat-label">NET WORTH:</span>
+                                <span class="stat-value">${stats.netWorth}</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">LEGACY:</span>
+                                <span class="stat-value">${stats.legacy}</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">PROGRESS:</span>
+                                <span class="stat-value">${stats.progress}%</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">ALIGNMENT:</span>
+                                <span class="stat-value">${stats.alignment}%</span>
+                            </span>
+                            <span class="ticker-item">
+                                <span class="stat-label">TURNS:</span>
+                                <span class="stat-value">${stats.turns}</span>
+                            </span>
+                            ${isNewBest ? '<span class="ticker-item new-best-score">NEW HIGH SCORE!</span>' : ''}
+                            ${highScorePosition && !isNewBest ? `<span class="ticker-item high-score-position">HIGH SCORE #${highScorePosition}</span>` : ''}
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-label">LEGACY:</span>
-                            <span class="stat-value">${stats.legacy}</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">PROGRESS:</span>
-                            <span class="stat-value">${stats.progress}%</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">ALIGNMENT:</span>
-                            <span class="stat-value">${stats.alignment}%</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">TURNS:</span>
-                            <span class="stat-value">${stats.turns}</span>
-                        </div>
-                        
-                        ${isNewBest ? '<div class="new-best-score">NEW HIGH SCORE!</div>' : ''}
-                        ${highScorePosition && !isNewBest ? `<div class="high-score-position">HIGH SCORE #${highScorePosition}</div>` : ''}
-                        ${bestScore && !isNewBest ? `<div class="best-score">BEST: $${(bestScore.netWorth / 1000000).toFixed(1)}M</div>` : ''}
                     </div>
                     
-                    <div class="share-section" id="share-section"></div>
+                    <!-- <div id="share-section" class="share-section"></div> -->
                 </div>
             </div>
         `;
@@ -344,14 +365,25 @@ const UI = {
         // Remove the scroll manipulation - let the natural layout work
         // The CSS padding should handle the spacing
         
-        // Add share functionality
-        const shareSection = document.getElementById('share-section');
-        if (shareSection) {
-            shareSection.appendChild(ShareSystem.createShareUI(ending, stats));
-        }
+        // Add share functionality - commented out for now
+        // const shareSection = document.getElementById('share-section');
+        // if (shareSection) {
+        //     shareSection.appendChild(ShareSystem.createShareUI(ending, stats));
+        // }
     },
     
     // Update phase indicator (if we add one)
+    // Format text with line breaks and bold
+    formatText(text) {
+        // First process line breaks
+        const lines = text.split('\n');
+        const formattedLines = lines.map(line => {
+            // Process bold text marked with **text**
+            return line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        });
+        return formattedLines.join('<br>');
+    },
+    
     updatePhase() {
         const phases = ['', 'Stumbling Agents', 'Expensive AI', 'Automation Surge', 'Singularity Approaching'];
         const phaseText = `Phase ${GameState.current.phase}: ${phases[GameState.current.phase]}`;

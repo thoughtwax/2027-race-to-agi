@@ -154,7 +154,7 @@ const Game = {
             } else if (state.resources.progress > 70) {
                 mainHeadline = {
                     title: 'BREAKTHROUGH IMMINENT',
-                    subtitle: 'NeuraBrain leads race to artificial general intelligence'
+                    subtitle: 'OpenBrain leads race to artificial general intelligence'
                 };
             } else if (state.flags.chinaAggressive) {
                 mainHeadline = {

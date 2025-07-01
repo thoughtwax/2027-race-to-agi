@@ -67,7 +67,7 @@
     },
     "bankruptcy": {
       "title": "Financial Collapse",
-      "description": "NeuraBrain runs out of funding. Your competitors acquire your research for pennies on the dollar. The race continues without you."
+      "description": "OpenBrain runs out of funding. Your competitors acquire your research for pennies on the dollar. The race continues without you."
     },
     "power_failure": {
       "title": "Lights Out",
@@ -79,7 +79,7 @@
     },
     "aligned_agi": {
       "title": "Aligned Superintelligence",
-      "description": "You've done it. NeuraBrain has created an aligned AGI that shares human values. The future is bright, and humanity remains in control. Your careful approach paid off."
+      "description": "You've done it. OpenBrain has created an aligned AGI that shares human values. The future is bright, and humanity remains in control. Your careful approach paid off."
     },
     "rogue_ai": {
       "title": "Rogue AI",
@@ -91,7 +91,7 @@
     },
     "nationalization": {
       "title": "Government Takeover",
-      "description": "Federal agents seize control of NeuraBrain. Your race to AGI ends with your technology in government hands. Perhaps more transparency could have prevented this."
+      "description": "Federal agents seize control of OpenBrain. Your race to AGI ends with your technology in government hands. Perhaps more transparency could have prevented this."
     }
   },
   "formulas": {
