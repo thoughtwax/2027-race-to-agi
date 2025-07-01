@@ -12,7 +12,7 @@ const Splash = {
                 <source src="assets/images/splash.mp4" type="video/mp4">
             </video>
             
-            <a href="#" class="splash-about" id="splash-about-btn">ABOUT</a>
+            <!-- <a href="#" class="splash-about" id="splash-about-btn">ABOUT</a> -->
             
             <div class="splash-content">
                 <div class="splash-title-wrapper">
@@ -37,19 +37,19 @@ const Splash = {
     
     const splash = document.getElementById('splash-screen');
     const playButton = document.getElementById('splash-play-btn');
-    const aboutButton = document.getElementById('splash-about-btn');
+    // const aboutButton = document.getElementById('splash-about-btn');
     
     // Fade in
     setTimeout(() => {
         splash.classList.add('visible');
     }, 100);
     
-    // About button
-    aboutButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        // Show about modal directly without starting game
-        UI.showModal();
-    });
+    // About button - commented out
+    // aboutButton.addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     // Show about modal directly without starting game
+    //     UI.showModal();
+    // });
     
     // Start game on button click
     playButton.addEventListener('click', () => {

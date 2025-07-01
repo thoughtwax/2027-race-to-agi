@@ -186,9 +186,7 @@ const UIEnhancements = {
                 app.classList.add('ending-rogue');
                 break;
             case 'power_failure':
-                // Fade to black effect
-                app.style.transition = 'filter 2s';
-                app.style.filter = 'brightness(0)';
+                // No fade to black - keep screen visible
                 break;
         }
     }
@@ -201,13 +199,7 @@ Object.assign(UI, {
     showEvent(event) {
         this._originalShowEvent(event);
         
-        // Add phase transition animation for phase changes
-        if (event.title && event.title.includes('Phase')) {
-            const phaseMatch = event.title.match(/Phase (\d)/);
-            if (phaseMatch) {
-                UIEnhancements.showPhaseTransition(phaseMatch[1], event.title, event.description);
-            }
-        }
+        // Removed phase transition animations - phases are internal game mechanics
     },
     
     _originalShowGameOver: UI.showGameOver,

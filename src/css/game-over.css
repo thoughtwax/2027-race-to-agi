@@ -10,6 +10,18 @@
     padding: 170px 20px 80px 20px;
 }
 
+/* Game over video background */
+.game-over-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.15;
+}
+
 /* Ending-specific background colors */
 .game-over-screen[data-ending="aligned_agi"] {
     background-color: #2d5a2d; /* Dark green for success */
@@ -117,7 +129,7 @@
 .ticker-container {
     width: 100%;
     overflow: hidden;
-    margin: 40px 0;
+    margin: 0 0 40px 0;
     position: relative;
 }
 

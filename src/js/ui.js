@@ -295,6 +295,9 @@ const UI = {
         
         gameArea.innerHTML = `
             <div class="game-over-screen" data-ending="${ending}">
+                <video class="game-over-video" autoplay loop muted playsinline>
+                    <source src="assets/images/gameover.mp4" type="video/mp4">
+                </video>
                 <div class="game-over-container">
                     <h1 class="game-over-label">GAME OVER</h1>
                     
