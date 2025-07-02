@@ -12,7 +12,10 @@ const EnhancedTooltips = {
             color: white;
             padding: 12px 16px;
             border-radius: 6px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
             font-size: 13px;
+            font-weight: 400;
+            font-style: normal;
             line-height: 1.4;
             pointer-events: none;
             z-index: 10000;
@@ -46,79 +49,79 @@ const EnhancedTooltips = {
         const value = parseInt(bar.getAttribute('data-value') || '0');
         const state = GameState.current;
         
-        let content = `<div style="font-weight: bold; margin-bottom: 8px; color: #4CAF50;">${resourceName.toUpperCase()}: ${value}%</div>`;
+        let content = `<div style="font-weight: bold; margin-bottom: 8px; color: #4CAF50; font-size: 13px;">${resourceName.toUpperCase()}: ${value}%</div>`;
         
         // Add resource-specific calculations
         switch(resourceName) {
             case 'progress':
                 const progressPerTurn = Math.floor((state.resources.compute * 0.1 + state.resources.talent * 0.1) * (state.resources.energy / 100));
-                content += `<div style="margin-bottom: 4px;">Progress per turn: <span style="color: #4CAF50">+${progressPerTurn}</span></div>`;
+                content += `<div style="margin-bottom: 4px; font-size: 11px;">Progress per turn: <span style="color: #4CAF50">+${progressPerTurn}</span></div>`;
                 content += `<div style="font-size: 11px; opacity: 0.8;">Formula: (Compute×0.1 + Talent×0.1) × Energy%</div>`;
                 if (state.resources.progress < 100 && progressPerTurn > 0) {
                     const turnsToAGI = Math.ceil((100 - state.resources.progress) / progressPerTurn);
-                    content += `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.2);">Turns to AGI: <span style="color: #2196F3">${turnsToAGI}</span></div>`;
+                    content += `<div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 11px;">Turns to AGI: <span style="color: #2196F3">${turnsToAGI}</span></div>`;
                 }
                 break;
                 
             case 'knowledge':
                 if (state.resources.progress > 30) {
                     const knowledgePerTurn = Math.floor(state.resources.progress * 0.1 * state.multipliers.knowledge);
-                    content += `<div style="margin-bottom: 4px;">Knowledge per turn: <span style="color: #4CAF50">+${knowledgePerTurn}</span></div>`;
+                    content += `<div style="margin-bottom: 4px; font-size: 11px;">Knowledge per turn: <span style="color: #4CAF50">+${knowledgePerTurn}</span></div>`;
                     content += `<div style="font-size: 11px; opacity: 0.8;">Formula: Progress×0.1 × Multiplier</div>`;
                     if (state.multipliers.knowledge > 1) {
-                        content += `<div style="margin-top: 4px; color: #FF9800;">AI Researcher bonus: ${state.multipliers.knowledge}x</div>`;
+                        content += `<div style="margin-top: 4px; color: #FF9800; font-size: 11px;">AI Researcher bonus: ${state.multipliers.knowledge}x</div>`;
                     }
                 } else {
-                    content += '<div style="color: #FFC107;">Requires Progress > 30 to generate</div>';
+                    content += '<div style="color: #FFC107; font-size: 11px;">Requires Progress > 30 to generate</div>';
                 }
                 break;
                 
             case 'capital':
                 const capitalPerTurn = Math.floor((state.resources.trust * state.resources.progress) / 200);
-                content += `<div style="margin-bottom: 4px;">Capital per turn: <span style="color: #4CAF50">+${capitalPerTurn}</span></div>`;
+                content += `<div style="margin-bottom: 4px; font-size: 11px;">Capital per turn: <span style="color: #4CAF50">+${capitalPerTurn}</span></div>`;
                 content += `<div style="font-size: 11px; opacity: 0.8;">Formula: (Trust × Progress) / 200</div>`;
                 if (capitalPerTurn < 5) {
-                    content += '<div style="margin-top: 4px; color: #FFC107;">Low income - increase Trust or Progress</div>';
+                    content += '<div style="margin-top: 4px; color: #FFC107; font-size: 11px;">Low income - increase Trust or Progress</div>';
                 }
                 break;
                 
             case 'energy':
                 const energyCost = Math.floor(state.resources.compute * 0.15 / state.multipliers.energy_efficiency);
                 const netEnergy = state.resources.energy - energyCost;
-                content += `<div style="margin-bottom: 4px;">Energy cost per turn: <span style="color: #F44336">-${energyCost}</span></div>`;
+                content += `<div style="margin-bottom: 4px; font-size: 11px;">Energy cost per turn: <span style="color: #F44336">-${energyCost}</span></div>`;
                 content += `<div style="font-size: 11px; opacity: 0.8;">Formula: Compute×0.15 / Efficiency</div>`;
                 if (state.multipliers.energy_efficiency > 1) {
-                    content += `<div style="margin-top: 4px; color: #4CAF50;">Efficiency bonus: ${((state.multipliers.energy_efficiency - 1) * 100).toFixed(0)}%</div>`;
+                    content += `<div style="margin-top: 4px; color: #4CAF50; font-size: 11px;">Efficiency bonus: ${((state.multipliers.energy_efficiency - 1) * 100).toFixed(0)}%</div>`;
                 }
                 if (netEnergy < 20) {
-                    content += '<div style="margin-top: 8px; padding: 4px; background: rgba(244,67,54,0.2); border-radius: 4px;">⚠️ Energy shortage imminent!</div>';
+                    content += '<div style="margin-top: 8px; padding: 4px; background: rgba(244,67,54,0.2); border-radius: 4px; font-size: 11px;">⚠️ Energy shortage imminent!</div>';
                 }
                 break;
                 
             case 'alignment':
                 if (state.flags.alignmentRevealed) {
                     if (value < 30) {
-                        content += '<div style="color: #F44336; font-weight: bold;">⚠️ CRITICAL: Rogue AI risk!</div>';
+                        content += '<div style="color: #F44336; font-weight: bold; font-size: 11px;">⚠️ CRITICAL: Rogue AI risk!</div>';
                         content += '<div style="font-size: 11px; margin-top: 4px;">AGI may not share human values</div>';
                     } else if (value < 50) {
-                        content += '<div style="color: #FF9800;">Warning: Alignment degrading</div>';
+                        content += '<div style="color: #FF9800; font-size: 11px;">Warning: Alignment degrading</div>';
                         content += '<div style="font-size: 11px; margin-top: 4px;">Focus on safety research</div>';
                     } else if (value > 70) {
-                        content += '<div style="color: #4CAF50;">Good alignment with human values</div>';
+                        content += '<div style="color: #4CAF50; font-size: 11px;">Good alignment with human values</div>';
                     }
                 } else {
-                    content += '<div style="font-style: italic; opacity: 0.7;">True value hidden until Phase 4</div>';
+                    content += '<div style="font-style: italic; opacity: 0.7; font-size: 11px;">True value hidden until Phase 4</div>';
                     content += '<div style="font-size: 11px; margin-top: 4px;">May be different from displayed value</div>';
                 }
                 break;
                 
             case 'trust':
                 if (value < 20) {
-                    content += '<div style="color: #F44336; font-weight: bold;">⚠️ Society turning against you!</div>';
+                    content += '<div style="color: #F44336; font-weight: bold; font-size: 11px;">⚠️ Society turning against you!</div>';
                 } else if (value < 30) {
-                    content += '<div style="color: #FF9800;">Government intervention risk</div>';
+                    content += '<div style="color: #FF9800; font-size: 11px;">Government intervention risk</div>';
                 } else if (value > 80) {
-                    content += '<div style="color: #4CAF50;">Strong public support</div>';
+                    content += '<div style="color: #4CAF50; font-size: 11px;">Strong public support</div>';
                 }
                 content += `<div style="margin-top: 4px; font-size: 11px;">Affects capital generation</div>`;
                 break;
@@ -126,34 +129,36 @@ const EnhancedTooltips = {
             case 'compute':
                 content += `<div style="font-size: 11px;">Used for AI training and progress</div>`;
                 if (value > 80) {
-                    content += '<div style="margin-top: 4px; color: #FF9800;">Global GPU shortage likely</div>';
+                    content += '<div style="margin-top: 4px; color: #FF9800; font-size: 11px;">Global GPU shortage likely</div>';
                 }
                 const computeContribution = Math.floor(state.resources.compute * 0.1 * (state.resources.energy / 100));
-                content += `<div style="margin-top: 4px;">Contributing <span style="color: #2196F3">+${computeContribution}</span> to progress</div>`;
+                content += `<div style="margin-top: 4px; font-size: 11px;">Contributing <span style="color: #2196F3">+${computeContribution}</span> to progress</div>`;
                 break;
                 
             case 'talent':
                 content += `<div style="font-size: 11px;">Research staff and engineers</div>`;
                 if (value < 30) {
-                    content += '<div style="margin-top: 4px; color: #FF9800;">Recruitment crisis - losing key staff</div>';
+                    content += '<div style="margin-top: 4px; color: #FF9800; font-size: 11px;">Recruitment crisis - losing key staff</div>';
                 }
                 const talentContribution = Math.floor(state.resources.talent * 0.1 * (state.resources.energy / 100));
-                content += `<div style="margin-top: 4px;">Contributing <span style="color: #2196F3">+${talentContribution}</span> to progress</div>`;
+                content += `<div style="margin-top: 4px; font-size: 11px;">Contributing <span style="color: #2196F3">+${talentContribution}</span> to progress</div>`;
                 break;
         }
         
         // Add competitor warning for progress
         if (resourceName === 'progress' && state.competitorProgress > 60) {
-            content += `<div style="margin-top: 8px; padding: 4px; background: rgba(244,67,54,0.2); border-radius: 4px;">DeepCent Progress: ${state.competitorProgress}%</div>`;
+            content += `<div style="margin-top: 8px; padding: 4px; background: rgba(244,67,54,0.2); border-radius: 4px; font-size: 11px;">DeepCent Progress: ${state.competitorProgress}%</div>`;
         }
         
-        // Add critical warnings
-        if (value <= 10) {
-            content += '<div style="margin-top: 8px; color: #F44336; font-weight: bold; text-align: center;">💀 CRITICAL - Game Over Risk!</div>';
-        } else if (value <= 20) {
-            content += '<div style="margin-top: 8px; color: #F44336; text-align: center;">⚠️ CRITICAL</div>';
-        } else if (value <= 30) {
-            content += '<div style="margin-top: 8px; color: #FF9800; text-align: center;">Low</div>';
+        // Add critical warnings (but not for progress bar)
+        if (resourceName !== 'progress') {
+            if (value <= 10) {
+                content += '<div style="margin-top: 8px; color: #F44336; font-weight: bold; text-align: center; font-size: 11px;">💀 CRITICAL - Game Over Risk!</div>';
+            } else if (value <= 20) {
+                content += '<div style="margin-top: 8px; color: #F44336; text-align: center; font-size: 11px;">⚠️ CRITICAL</div>';
+            } else if (value <= 30) {
+                content += '<div style="margin-top: 8px; color: #FF9800; text-align: center; font-size: 11px;">Low</div>';
+            }
         }
         
         this.tooltip.innerHTML = content;

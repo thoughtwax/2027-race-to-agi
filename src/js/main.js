@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Add debug commands in development
         if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            // Debug button is visible by default in HTML, no need to show it
             window.debug = {
                 state: GameState,
                 cards: Cards,
@@ -69,6 +70,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                 }
             };
             
+        } else {
+            // Hide debug button when not on localhost
+            const debugBtn = document.getElementById('debug-btn');
+            if (debugBtn) {
+                debugBtn.style.display = 'none';
+            }
         }
         
     } catch (error) {

@@ -226,8 +226,8 @@ const Resources = {
         Object.entries(labelTooltips).forEach(([resource, text]) => {
             const label = document.querySelector(`[data-resource="${resource}"] .resource-label`);
             if (label) {
-                label.setAttribute('title', text);
-                label.style.cursor = 'help';
+                // Removed title attribute to prevent native tooltips
+                // Removed help cursor - using default cursor for labels
             }
         });
         
@@ -237,13 +237,8 @@ const Resources = {
                 barContainer.setAttribute('data-tooltip-template', template);
                 barContainer.style.cursor = 'help';
                 
-                // Update tooltip on hover
-                barContainer.addEventListener('mouseenter', (e) => {
-                    const bar = e.currentTarget.querySelector('.resource-bar');
-                    const value = bar.getAttribute('data-value') || '0';
-                    const text = template.replace('{value}', value);
-                    e.currentTarget.setAttribute('title', text);
-                });
+                // Removed title attribute setting to prevent native tooltips
+                // Enhanced tooltips handle all tooltip display
             }
         });
     }

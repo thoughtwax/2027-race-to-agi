@@ -296,10 +296,10 @@ const UI = {
         gameArea.innerHTML = `
             <div class="game-over-screen" data-ending="${ending}">
                 <video class="game-over-video" autoplay loop muted playsinline>
-                    <source src="assets/images/gameover.mp4" type="video/mp4">
+                    <source src="assets/images/${ending === 'aligned_agi' ? 'win' : 'gameover'}.mp4" type="video/mp4">
                 </video>
                 <div class="game-over-container">
-                    <h1 class="game-over-label">GAME OVER</h1>
+                    <h1 class="game-over-label">${ending === 'aligned_agi' ? 'SUCCESS!' : 'GAME OVER'}</h1>
                     
                     <div class="ending-card" data-ending="${ending}">
                         <div class="card-label">YOUR RESULT</div>

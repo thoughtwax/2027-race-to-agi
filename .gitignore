@@ -30,3 +30,8 @@ mockups/
 # Project documentation
 TODO.md
 PRD.md
+
+# Tools output
+tools/content-editor/*.csv
+tools/content-editor/*.tsv
+tools/content-editor/*.html
