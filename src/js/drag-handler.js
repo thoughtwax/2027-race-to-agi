@@ -40,7 +40,7 @@ const DragHandler = {
     
     attachToCard() {
         this.cardElement = document.getElementById('current-card');
-        console.log('Attaching to card element:', this.cardElement);
+        // console.log('Attaching to card element:', this.cardElement);
         if (!this.cardElement) {
             console.warn('Card element not found');
             return;
@@ -56,11 +56,11 @@ const DragHandler = {
         this.cardElement.addEventListener('touchstart', this.boundHandlePointerDown);
         this.cardElement.addEventListener('pointerdown', this.boundHandlePointerDown);
         
-        console.log('Event listeners attached to card');
+        // console.log('Event listeners attached to card');
     },
     
     handlePointerDown(e) {
-        console.log('Pointer down event', e.type, e);
+        // console.log('Pointer down event', e.type, e);
         
         // Prevent default to avoid scrolling on touch
         e.preventDefault();
@@ -122,7 +122,7 @@ const DragHandler = {
     handlePointerUp(e) {
         if (!this.dragging) return;
         
-        console.log('Pointer up event', e.type);
+        // console.log('Pointer up event', e.type);
         
         this.dragging = false;
         const deltaX = this.currentX - this.startX;
@@ -160,7 +160,7 @@ const DragHandler = {
         // Force a repaint to ensure the transform is applied
         this.cardElement.style.webkitTransform = transformValue;
         
-        console.log('Updating card position:', transformValue);
+        // console.log('Updating card position:', transformValue);
     },
     
     updateButtonFeedback(deltaX) {

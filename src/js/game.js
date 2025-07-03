@@ -237,11 +237,11 @@ const Game = {
     
     // End game
     endGame(ending) {
-        console.log('Game.endGame called with:', ending);
+        // console.log('Game.endGame called with:', ending);
         
         // Defensive check
         if (!ending || typeof ending !== 'string') {
-            console.error('Invalid ending passed to endGame:', ending);
+            // console.error('Invalid ending passed to endGame:', ending);
             ending = 'unknown_ending';
         }
         

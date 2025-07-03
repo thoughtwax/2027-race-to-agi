@@ -211,11 +211,11 @@ const UI = {
     
     // Show game over screen
     showGameOver(ending) {
-        console.log('Game Over - Ending triggered:', ending);
+        // console.log('Game Over - Ending triggered:', ending);
         
         // Defensive check for null/undefined
         if (!ending) {
-            console.error('ERROR: showGameOver called with null/undefined ending!');
+            // console.error('ERROR: showGameOver called with null/undefined ending!');
             ending = 'unknown_ending';
         }
         
@@ -234,21 +234,21 @@ const UI = {
     
     // Display game over content
     showGameOverContent(ending) {
-        // Comprehensive logging
-        console.log('=== GAME OVER DEBUG ===');
-        console.log('Ending parameter:', ending);
-        console.log('Ending type:', typeof ending);
-        console.log('Game state at ending:', {
-            resources: GameState.current.resources,
-            turn: GameState.current.turnCount,
-            phase: GameState.current.phase
-        });
+        // Comprehensive logging (commented out for production)
+        // console.log('=== GAME OVER DEBUG ===');
+        // console.log('Ending parameter:', ending);
+        // console.log('Ending type:', typeof ending);
+        // console.log('Game state at ending:', {
+        //     resources: GameState.current.resources,
+        //     turn: GameState.current.turnCount,
+        //     phase: GameState.current.phase
+        // });
         
         // First try to get ending from Config if available
         let endingData = null;
         if (typeof Config !== 'undefined' && Config.endings && Config.endings[ending]) {
             endingData = Config.endings[ending];
-            console.log('Found ending in Config');
+            // console.log('Found ending in Config');
         }
         
         // Fallback to hardcoded endings
@@ -303,15 +303,15 @@ const UI = {
         if (!endingData) {
             endingData = endingsData[ending];
             if (endingData) {
-                console.log('Found ending in hardcoded data');
+                // console.log('Found ending in hardcoded data');
             }
         }
         
         // Final fallback for unknown endings
         if (!endingData) {
-            console.error(`UNKNOWN ENDING: "${ending}"`);
-            console.error('Available endings:', Object.keys(endingsData));
-            console.error('This is causing the generic game over screen!');
+            // console.error(`UNKNOWN ENDING: "${ending}"`);
+            // console.error('Available endings:', Object.keys(endingsData));
+            // console.error('This is causing the generic game over screen!');
             
             endingData = { 
                 title: "Game Over", 
@@ -319,8 +319,8 @@ const UI = {
             };
         }
         
-        console.log('Final ending data:', endingData);
-        console.log('=== END DEBUG ===');
+        // console.log('Final ending data:', endingData);
+        // console.log('=== END DEBUG ===');
         
         // Gather stats for sharing and high scores
         const stats = {

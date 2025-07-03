@@ -254,7 +254,7 @@ const applyBalancePatches = () => {
             if (Object.entries(check).every(([resource, value]) => r[resource] <= value)) {
                 // Transform camelCase to snake_case
                 const transformedEnding = condition.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
-                console.log(`Balance-config triggering ending: ${condition} → ${transformedEnding}`);
+                // console.log(`Balance-config triggering ending: ${condition} → ${transformedEnding}`);
                 Game.endGame(transformedEnding);
             }
         });
