@@ -285,11 +285,60 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .game-over-container {
+        width: 100%;
+        max-width: 500px;
+        padding: 0 20px;
+    }
+    
+    .game-over-screen {
+        padding: 120px 0 60px 0;
+    }
+    
+    .game-over-label {
+        font-size: 32px;
+        letter-spacing: 0.3em;
+        margin-bottom: 40px;
+    }
+    
+    .ending-card {
+        padding: var(--spacing-lg) var(--spacing-lg) 250px;
+        margin-bottom: 30px;
+    }
+    
     .ending-title {
         font-size: 28px;
     }
     
     .ending-description {
         font-size: 15px;
+    }
+    
+    .ticker-container {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-over-container {
+        padding: 0 16px;
+    }
+    
+    .game-over-label {
+        font-size: 28px;
+        letter-spacing: 0.2em;
+    }
+    
+    .ending-card {
+        padding: var(--spacing-md) var(--spacing-md) 200px;
+    }
+    
+    .ending-title {
+        font-size: 24px;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .ending-description {
+        font-size: 14px;
     }
 }
