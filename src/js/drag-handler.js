@@ -18,6 +18,7 @@ const DragHandler = {
         this.boundHandlePointerDown = this.handlePointerDown.bind(this);
         this.boundHandlePointerMove = this.handlePointerMove.bind(this);
         this.boundHandlePointerUp = this.handlePointerUp.bind(this);
+        this.boundHandleKeyDown = this.handleKeyDown.bind(this);
         this.preventDefaultTouch = (e) => e.preventDefault();
         
         // Document-level events for reliability
@@ -29,6 +30,9 @@ const DragHandler = {
         document.addEventListener('pointermove', this.boundHandlePointerMove);
         document.addEventListener('pointerup', this.boundHandlePointerUp);
         document.addEventListener('pointercancel', this.boundHandlePointerUp);
+        
+        // Add keyboard support
+        document.addEventListener('keydown', this.boundHandleKeyDown);
         
         // Attach to card element
         this.attachToCard();
@@ -234,6 +238,53 @@ const DragHandler = {
         setTimeout(() => {
             this.cardElement.style.transition = '';
         }, 300);
+    },
+    
+    handleKeyDown(e) {
+        // Only handle arrow keys when not dragging and card is visible
+        if (this.dragging || this.accepting || !this.cardElement || this.cardElement.style.visibility === 'hidden') return;
+        
+        // Check if we're in a game over screen or other modal
+        if (document.querySelector('.game-over-screen') || document.querySelector('.newspaper-modal')) return;
+        
+        let choice = null;
+        
+        if (e.key === 'ArrowLeft') {
+            choice = 'left';
+            e.preventDefault();
+        } else if (e.key === 'ArrowRight') {
+            choice = 'right';
+            e.preventDefault();
+        }
+        
+        if (choice) {
+            // Animate the card slightly to show the choice
+            this.animateKeyboardChoice(choice);
+        }
+    },
+    
+    animateKeyboardChoice(choice) {
+        // Prevent multiple keyboard accepts
+        if (this.accepting) return;
+        
+        const direction = choice === 'left' ? -1 : 1;
+        const targetX = direction * 200;
+        const rotation = direction * 15;
+        
+        // Add visual feedback to buttons
+        const button = document.getElementById(`choice-${choice}`);
+        if (button) {
+            button.classList.add('active');
+        }
+        
+        // Animate card
+        this.cardElement.style.transition = 'transform 0.2s ease-out';
+        this.cardElement.style.transform = `translate3d(${targetX}px, 0, 0) rotate(${rotation}deg)`;
+        
+        // After a brief moment, accept the choice
+        setTimeout(() => {
+            this.acceptChoice(choice);
+        }, 200);
     },
     
     reset() {
