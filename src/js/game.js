@@ -260,6 +260,13 @@ const Game = {
             GameState.updateLegacy(legacyMap[ending]);
         }
         
+        // Store last ending for variety system
+        try {
+            localStorage.setItem('ai2027_lastEnding', ending);
+        } catch (e) {
+            // Ignore localStorage errors
+        }
+        
         // Show game over screen
         UI.showGameOver(ending);
         

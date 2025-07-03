@@ -40,6 +40,14 @@ const GameState = {
     // No save/load functionality - game is session-based
     
     reset() {
+        // Get last ending for variety adjustments
+        let lastEnding = null;
+        try {
+            lastEnding = localStorage.getItem('ai2027_lastEnding');
+        } catch (e) {
+            // Ignore localStorage errors
+        }
+        
         // Reset to initial state
         this.current = {
             date: { month: 1, year: 2025 },
@@ -50,7 +58,7 @@ const GameState = {
                 talent: 70,
                 knowledge: 30,
                 progress: 10,
-                trust: 60,
+                trust: 70,  // Already increased from 60 to 70 in previous fix
                 capital: 50,
                 alignment: 80
             },
@@ -76,6 +84,60 @@ const GameState = {
             decisionsSinceNewspaper: 0,
             recentDecisions: []
         };
+        
+        // Apply variety adjustments based on last ending
+        if (lastEnding) {
+            this.applyVarietyAdjustments(lastEnding);
+            this.current.hasVarietyAdjustment = true;
+            this.current.lastEndingType = lastEnding;
+        }
+    },
+    
+    // Apply adjustments to prevent same ending twice
+    applyVarietyAdjustments(lastEnding) {
+        const r = this.current.resources;
+        
+        switch(lastEnding) {
+            case 'no_trust':
+                r.trust = Math.min(100, r.trust + 10);
+                // Trust will decay slower (handled in balance-config)
+                break;
+                
+            case 'bankruptcy':
+                r.capital = Math.min(100, r.capital + 10);
+                r.trust = Math.min(100, r.trust + 5); // Trust helps capital generation
+                break;
+                
+            case 'power_failure':
+                r.energy = Math.min(100, r.energy + 10);
+                this.current.multipliers.energy_efficiency = 1.1; // 10% better efficiency
+                break;
+                
+            case 'quit':
+                r.talent = Math.min(100, r.talent + 10);
+                r.knowledge = Math.min(100, r.knowledge + 5); // Knowledge helps retain talent
+                break;
+                
+            case 'competitor_wins':
+                this.current.competitorProgress = 0; // Start competitor slower
+                break;
+                
+            case 'aligned_agi':
+                r.alignment = 65; // Make it harder to get same ending
+                break;
+                
+            case 'rogue_ai':
+                r.alignment = 85; // Push toward different ending
+                break;
+                
+            case 'uncertain_agi':
+                // Randomize alignment to encourage different outcome
+                r.alignment = 60 + Math.floor(Math.random() * 30);
+                break;
+        }
+        
+        // Log adjustment for transparency (commented out for production)
+        // console.log(`Variety adjustment applied for last ending: ${lastEnding}`);
     },
     
     // Resource management
