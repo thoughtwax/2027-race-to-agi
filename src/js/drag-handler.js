@@ -222,7 +222,7 @@ const DragHandler = {
             this.cardElement.style.visibility = 'hidden';
             Cards.makeChoice(choice);
             this.accepting = false;
-        }, 200); // Match the faster exit animation duration
+        }, 400); // Match the exit animation duration
     },
     
     springBack() {
@@ -284,7 +284,7 @@ const DragHandler = {
         // After a brief moment, accept the choice
         setTimeout(() => {
             this.acceptChoice(choice);
-        }, 200);
+        }, 150);
     },
     
     reset() {
