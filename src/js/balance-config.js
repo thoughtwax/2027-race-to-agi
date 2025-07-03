@@ -252,7 +252,8 @@ const applyBalancePatches = () => {
         // Check for automatic loss conditions
         Object.entries(BalanceConfig.lossConditions).forEach(([condition, check]) => {
             if (Object.entries(check).every(([resource, value]) => r[resource] <= value)) {
-                const transformedEnding = condition.toLowerCase().replace(/([A-Z])/g, '_$1').toLowerCase();
+                // Transform camelCase to snake_case
+                const transformedEnding = condition.replace(/([a-z])([A-Z])/g, '$1_$2').toLowerCase();
                 console.log(`Balance-config triggering ending: ${condition} → ${transformedEnding}`);
                 Game.endGame(transformedEnding);
             }
