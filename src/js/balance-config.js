@@ -44,10 +44,10 @@ const BalanceConfig = {
     feedbackLoops: {
         // Trust decay from energy use - more gradual
         trustDecayFromEnergy: {
-            threshold: 75,      // Starts later
-            rate: 2,           // Slower decay
-            severeThreshold: 85,
-            severeRate: 4
+            threshold: 80,      // Starts later (was 75)
+            rate: 1,           // Much slower decay (was 2)
+            severeThreshold: 90,  // Higher threshold (was 85)
+            severeRate: 2      // Slower severe decay (was 4)
         },
         
         // Alignment decay from progress - more nuanced
@@ -202,6 +202,13 @@ const applyBalancePatches = () => {
         if (capitalGain > 0) {
             const actualChange = GameState.updateResource('capital', capitalGain);
             this.showChange('capital', actualChange);
+        }
+        
+        // Small trust recovery when alignment is high and energy is reasonable
+        if (r.alignment > 60 && r.energy < 70 && r.trust < 50) {
+            const trustRecovery = 1;
+            const actualChange = GameState.updateResource('trust', trustRecovery);
+            this.showChange('trust', actualChange);
         }
         
         // Energy consumption with phase modifier
