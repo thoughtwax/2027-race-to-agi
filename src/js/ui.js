@@ -226,10 +226,17 @@ const UI = {
     
     // Display game over content
     showGameOverContent(ending) {
+        // First try to get ending from Config if available
+        let endingData = null;
+        if (typeof Config !== 'undefined' && Config.endings && Config.endings[ending]) {
+            endingData = Config.endings[ending];
+        }
+        
+        // Fallback to hardcoded endings
         const endingsData = {
             quit: {
-                title: "You Quit",
-                description: "**Not everybody has what it takes** to lead the race to AGI. You step down before even trying, leaving the future in someone else's hands."
+                title: "Talent Exodus",
+                description: "**Your best researchers have abandoned ship**. Without brilliant minds to push forward, OpenBrain's AI dreams crumble. The human element was always the most critical resource."
             },
             no_trust: {
                 title: "Complete Distrust",
@@ -265,10 +272,19 @@ const UI = {
             }
         };
         
-        const endingData = endingsData[ending] || { 
-            title: "Game Over", 
-            description: "Your tenure as CEO has ended." 
-        };
+        // Use config data if available, otherwise fallback to hardcoded
+        if (!endingData) {
+            endingData = endingsData[ending];
+        }
+        
+        // Final fallback for unknown endings
+        if (!endingData) {
+            console.warn(`Unknown ending: ${ending}`);
+            endingData = { 
+                title: "Game Over", 
+                description: "Your journey to create AGI has come to an end. The future remains uncertain." 
+            };
+        }
         
         // Gather stats for sharing and high scores
         const stats = {
