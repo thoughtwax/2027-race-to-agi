@@ -119,46 +119,46 @@
 
 /* Ending-specific background images */
 .ending-card[data-ending="aligned_agi"]::after {
-    background-image: url('/assets/images/aligned.png');
+    background-image: url('../../assets/images/aligned.png');
 }
 
 .ending-card[data-ending="bankruptcy"]::after {
-    background-image: url('/assets/images/bankruptcy.png');
+    background-image: url('../../assets/images/bankruptcy.png');
 }
 
 .ending-card[data-ending="competitor_wins"]::after {
-    background-image: url('/assets/images/competitor.png');
+    background-image: url('../../assets/images/competitor.png');
 }
 
 .ending-card[data-ending="power_failure"]::after {
-    background-image: url('/assets/images/power.png');
+    background-image: url('../../assets/images/power.png');
 }
 
 .ending-card[data-ending="rogue_ai"]::after {
-    background-image: url('/assets/images/rogue.png');
+    background-image: url('../../assets/images/rogue.png');
 }
 
 .ending-card[data-ending="no_trust"]::after {
-    background-image: url('/assets/images/trust.png');
+    background-image: url('../../assets/images/trust.png');
 }
 
 .ending-card[data-ending="uncertain_agi"]::after {
-    background-image: url('/assets/images/uncertain.png');
+    background-image: url('../../assets/images/uncertain.png');
 }
 
 .ending-card[data-ending="quit"]::after {
-    background-image: url('/assets/images/quit.png');
+    background-image: url('../../assets/images/quit.png');
 }
 
 .ending-card[data-ending="nationalization"]::after {
-    background-image: url('/assets/images/nationalization.png');
+    background-image: url('../../assets/images/nationalization.png');
 }
 
 /* Default ending uses quit background */
 .ending-card:not([data-ending])::after,
 .ending-card[data-ending=""]::after,
 .ending-card[data-ending="unknown_ending"]::after {
-    background-image: url('/assets/images/quit.png');
+    background-image: url('../../assets/images/quit.png');
 }
 
 /* Ticker tape styles */
