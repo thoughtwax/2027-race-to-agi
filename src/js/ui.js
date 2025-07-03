@@ -237,8 +237,8 @@ const UI = {
         // Fallback to hardcoded endings
         const endingsData = {
             quit: {
-                title: "Talent Exodus",
-                description: "**Your best researchers have abandoned ship**. Without brilliant minds to push forward, OpenBrain's AI dreams crumble. The human element was always the most critical resource."
+                title: "You Quit",
+                description: "**Not everybody has what it takes** to lead the race to AGI. You step down before even trying, leaving the future in someone else's hands."
             },
             no_trust: {
                 title: "Complete Distrust",
