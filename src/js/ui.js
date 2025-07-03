@@ -213,6 +213,12 @@ const UI = {
     showGameOver(ending) {
         console.log('Game Over - Ending triggered:', ending);
         
+        // Defensive check for null/undefined
+        if (!ending) {
+            console.error('ERROR: showGameOver called with null/undefined ending!');
+            ending = 'unknown_ending';
+        }
+        
         // Hide the game UI elements
         document.getElementById('header').style.display = 'none';
         document.getElementById('resources').style.display = 'none';
@@ -228,10 +234,21 @@ const UI = {
     
     // Display game over content
     showGameOverContent(ending) {
+        // Comprehensive logging
+        console.log('=== GAME OVER DEBUG ===');
+        console.log('Ending parameter:', ending);
+        console.log('Ending type:', typeof ending);
+        console.log('Game state at ending:', {
+            resources: GameState.current.resources,
+            turn: GameState.current.turnCount,
+            phase: GameState.current.phase
+        });
+        
         // First try to get ending from Config if available
         let endingData = null;
         if (typeof Config !== 'undefined' && Config.endings && Config.endings[ending]) {
             endingData = Config.endings[ending];
+            console.log('Found ending in Config');
         }
         
         // Fallback to hardcoded endings
@@ -276,26 +293,34 @@ const UI = {
                 title: "Technological Singularity",
                 description: "**You've created something beyond AGI**—a superintelligence that rapidly improves itself. In moments, it surpasses all human understanding. Whether this marks humanity's transcendence or obsolescence remains to be seen."
             },
-            // Handle balance-config generated ending
-            talent_drain: {
-                title: "Talent Exodus",
-                description: "**Your best researchers have abandoned ship**. Without brilliant minds to push forward, OpenBrain's AI dreams crumble. The human element was always the most critical resource."
+            unknown_ending: {
+                title: "Unexpected Outcome",
+                description: "**Something went wrong**. The simulation has ended in an unexpected way. Please check the console for debugging information."
             }
         };
         
         // Use config data if available, otherwise fallback to hardcoded
         if (!endingData) {
             endingData = endingsData[ending];
+            if (endingData) {
+                console.log('Found ending in hardcoded data');
+            }
         }
         
         // Final fallback for unknown endings
         if (!endingData) {
-            console.warn(`Unknown ending: ${ending}`);
+            console.error(`UNKNOWN ENDING: "${ending}"`);
+            console.error('Available endings:', Object.keys(endingsData));
+            console.error('This is causing the generic game over screen!');
+            
             endingData = { 
                 title: "Game Over", 
                 description: "Your journey to create AGI has come to an end. The future remains uncertain." 
             };
         }
+        
+        console.log('Final ending data:', endingData);
+        console.log('=== END DEBUG ===');
         
         // Gather stats for sharing and high scores
         const stats = {

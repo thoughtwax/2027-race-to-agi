@@ -147,8 +147,8 @@ const BalanceConfig = {
         bankruptcy: { capital: 0 },
         noTrust: { trust: 0 },
         powerFailure: { energy: 0 },
-        competitorWins: { competitorProgress: 100 },
-        talentDrain: { talent: 0 }
+        competitorWins: { competitorProgress: 100 }
+        // Removed talentDrain to prevent race condition with state.js quit check
     }
 };
 
@@ -252,7 +252,9 @@ const applyBalancePatches = () => {
         // Check for automatic loss conditions
         Object.entries(BalanceConfig.lossConditions).forEach(([condition, check]) => {
             if (Object.entries(check).every(([resource, value]) => r[resource] <= value)) {
-                Game.endGame(condition.toLowerCase().replace(/([A-Z])/g, '_$1').toLowerCase());
+                const transformedEnding = condition.toLowerCase().replace(/([A-Z])/g, '_$1').toLowerCase();
+                console.log(`Balance-config triggering ending: ${condition} → ${transformedEnding}`);
+                Game.endGame(transformedEnding);
             }
         });
         
