@@ -211,6 +211,8 @@ const UI = {
     
     // Show game over screen
     showGameOver(ending) {
+        console.log('Game Over - Ending triggered:', ending);
+        
         // Hide the game UI elements
         document.getElementById('header').style.display = 'none';
         document.getElementById('resources').style.display = 'none';
@@ -269,6 +271,15 @@ const UI = {
             nationalization: {
                 title: "Government Takeover",
                 description: "**Federal agents seize control** of OpenBrain. Your race to AGI ends with your technology in government hands. Perhaps more transparency could have prevented this."
+            },
+            superintelligence: {
+                title: "Technological Singularity",
+                description: "**You've created something beyond AGI**—a superintelligence that rapidly improves itself. In moments, it surpasses all human understanding. Whether this marks humanity's transcendence or obsolescence remains to be seen."
+            },
+            // Handle balance-config generated ending
+            talent_drain: {
+                title: "Talent Exodus",
+                description: "**Your best researchers have abandoned ship**. Without brilliant minds to push forward, OpenBrain's AI dreams crumble. The human element was always the most critical resource."
             }
         };
         
