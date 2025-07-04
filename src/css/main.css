@@ -38,6 +38,8 @@
 #app {
     height: 100vh;
     height: 100dvh; /* Dynamic viewport height for mobile */
+    height: -webkit-fill-available; /* iOS Safari fullscreen */
+    height: calc(var(--vh, 1vh) * 100); /* Custom viewport height */
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -47,6 +49,24 @@
     overflow-y: hidden;
     min-width: 375px; /* Minimum width for modern mobile devices */
     padding-bottom: env(safe-area-inset-bottom); /* Safe area for devices with home indicator */
+    position: fixed; /* Prevent scroll */
+    top: 0;
+    left: 0;
+}
+
+/* Ensure HTML and body fill the viewport */
+html {
+    height: -webkit-fill-available;
+}
+
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 /* Header */
