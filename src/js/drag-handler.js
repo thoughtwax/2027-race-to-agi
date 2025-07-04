@@ -207,6 +207,9 @@ const DragHandler = {
         this.cardElement.classList.remove('dragging');
         this.cardElement.classList.add('exiting', `exit-${choice}`);
         
+        // Ensure the transition is applied for the exit animation
+        this.cardElement.style.transition = '';
+        
         // Hide buttons immediately when choice is made
         const buttons = document.querySelector('.choice-buttons');
         if (buttons) {
@@ -217,12 +220,10 @@ const DragHandler = {
         
         // Wait for animation then make choice
         setTimeout(() => {
-            // Hide the card completely after exit animation
-            this.cardElement.style.opacity = '0';
-            this.cardElement.style.visibility = 'hidden';
+            // Don't manually hide the card - let CSS handle it
             Cards.makeChoice(choice);
             this.accepting = false;
-        }, 400); // Match the exit animation duration
+        }, 500); // Match the exit animation duration
     },
     
     springBack() {

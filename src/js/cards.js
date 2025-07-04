@@ -347,16 +347,21 @@ const Cards = {
         // Force remove all transforms and transitions
         cardElement.style.transform = '';
         cardElement.style.transition = '';
-        cardElement.style.opacity = '';
+        cardElement.style.opacity = '1'; // Ensure full opacity
         cardElement.style.visibility = ''; // Reset visibility
         // Remove ALL animation classes
         cardElement.classList.remove(
             'animating-out', 'card-exiting-left', 'card-exiting-right',
             'card-entering', 'dragging', 'exiting', 'exit-left', 'exit-right',
-            'animating-in', 'card-entry', 'card-prep'
+            'animating-in', 'card-entry', 'card-prep', 'urgent'
         );
         // Force a reflow to ensure styles are applied
         void cardElement.offsetWidth;
+        
+        // Reset drag handler
+        if (DragHandler.reset) {
+            DragHandler.reset();
+        }
     },
     
     // Old drag handling methods - replaced by DragHandler module
@@ -474,15 +479,6 @@ const Cards = {
         requestAnimationFrame(animate);
     },
     
-    resetCard() {
-        const cardElement = document.getElementById('current-card');
-        cardElement.style.transform = '';
-        cardElement.style.opacity = '';
-        cardElement.classList.remove(
-            'animating-out', 'card-exiting-left', 'card-exiting-right',
-            'card-entering', 'dragging'
-        );
-    },
     
     updateButtonEmphasis(deltaX) {
         const leftButton = document.getElementById('choice-left');
