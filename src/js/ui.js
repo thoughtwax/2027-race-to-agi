@@ -201,9 +201,13 @@ const UI = {
         };
         
         closeBtn.addEventListener('click', closeNewspaper);
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closeNewspaper();
-        });
+        
+        // Click anywhere on the modal or newspaper to close
+        modal.addEventListener('click', closeNewspaper);
+        
+        // Prevent event bubbling from child elements if needed
+        const newspaper = modal.querySelector('.newspaper');
+        newspaper.addEventListener('click', closeNewspaper);
         
         // Auto-close after delay
         setTimeout(closeNewspaper, 8000);
